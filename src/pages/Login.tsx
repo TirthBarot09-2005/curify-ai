@@ -191,7 +191,7 @@ function PasswordStrengthMeter({ evalResult }: { evalResult: ReturnType<typeof e
 export default function Login() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { login, isAuthenticated, user, setUser, logout, refreshUser, setPatientAuthTransition } = useAuth();
+  const { login, isAuthenticated, user, setUser, logout, refreshUser, syncWithBackend, setPatientAuthTransition } = useAuth();
   const { isLoaded: isSignInLoaded, signIn, setActive: setSignInActive } = useSignIn();
   const { isLoaded: isSignUpLoaded, signUp, setActive: setSignUpActive } = useSignUp();
 
@@ -316,13 +316,15 @@ export default function Login() {
       }
     }
 
+    // Immediately show patient auth transition overlay on user interaction
+    setPatientAuthTransition({
+      type: 'login',
+      primaryText: 'Signing you in securely',
+      secondaryText: 'Preparing your Curify workspace',
+    });
+
     try {
       if (isSignInLoaded && signIn) {
-        setPatientAuthTransition({
-          type: 'login',
-          primaryText: 'Signing you in securely',
-          secondaryText: 'Preparing your Curify workspace',
-        });
         try {
           const result = await signIn.create({
             identifier: loginEmail.trim(),
@@ -355,18 +357,16 @@ export default function Login() {
             };
             localStorage.setItem('curify_user', JSON.stringify(activeUser));
             setUser(activeUser);
-            refreshUser().catch(() => {});
+            const syncedUser = await syncWithBackend();
             const stored = localStorage.getItem('curify_user');
-            const u = stored ? JSON.parse(stored) : null;
+            const u = syncedUser || (stored ? JSON.parse(stored) : activeUser);
             hasNavigatedRef.current = true;
             if (u?.role === 'patient' && u?.onboardingCompleted === false) {
               navigate('/patient/onboarding', { replace: true });
             } else {
               navigate(`/${u?.role || 'patient'}`, { replace: true });
             }
-            setTimeout(() => {
-              setPatientAuthTransition(null);
-            }, 300);
+            setPatientAuthTransition(null);
             return;
           } else if (result.status === 'needs_second_factor') {
             setPatientAuthTransition(null);
@@ -395,6 +395,7 @@ export default function Login() {
             } else {
               navigate(`/${u?.role || 'patient'}`, { replace: true });
             }
+            setPatientAuthTransition(null);
             return;
           }
 
@@ -649,9 +650,7 @@ export default function Login() {
           });
           hasNavigatedRef.current = true;
           navigate('/patient/onboarding', { replace: true });
-          setTimeout(() => {
-            setPatientAuthTransition(null);
-          }, 300);
+          setPatientAuthTransition(null);
         } else {
           navigate('/lender', { replace: true });
         }
@@ -763,12 +762,10 @@ export default function Login() {
           if (setSignInActive) {
             await setSignInActive({ session: result.createdSessionId });
           }
-          await refreshUser();
+          await syncWithBackend();
           hasNavigatedRef.current = true;
           navigate('/patient', { replace: true });
-          setTimeout(() => {
-            setPatientAuthTransition(null);
-          }, 300);
+          setPatientAuthTransition(null);
         }
       }
     } catch (err: any) {

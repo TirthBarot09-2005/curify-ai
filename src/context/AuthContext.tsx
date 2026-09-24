@@ -29,7 +29,8 @@ interface AuthContextType {
     phone?: string;
   }) => Promise<void>;
   logout: (options?: { isPatient?: boolean }) => Promise<void>;
-  refreshUser: () => Promise<void>;
+  syncWithBackend: () => Promise<User | null>;
+  refreshUser: () => Promise<User | null>;
   fetchProfile: () => Promise<void>;
 }
 
@@ -62,18 +63,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   // Synchronize Clerk token getter with API client
   useEffect(() => {
-    if (isSignedIn) {
-      setTokenGetter(async () => {
-        try {
-          return await getToken();
-        } catch {
-          return null;
+    setTokenGetter(async () => {
+      try {
+        if (clerk.session) {
+          const tok = await clerk.session.getToken();
+          if (tok) return tok;
         }
-      });
-    } else {
-      setTokenGetter(async () => null);
-    }
-  }, [isSignedIn, getToken]);
+        if (isSignedIn) {
+          return await getToken();
+        }
+        return null;
+      } catch {
+        return null;
+      }
+    });
+  }, [isSignedIn, getToken, clerk]);
 
   // Fetch extended patient profile from backend
   const fetchProfile = useCallback(async () => {
@@ -86,8 +90,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   // Synchronize Curify user profile from backend when Clerk auth state resolves
-  const syncWithBackend = useCallback(async () => {
-    if (!isSignedIn || !clerkUser) {
+  const syncWithBackend = useCallback(async (): Promise<User | null> => {
+    const activeClerkUser = clerkUser || clerk.user;
+    const activeSignedIn = isSignedIn || !!clerk.session;
+
+    if (!activeSignedIn || !activeClerkUser) {
       // Check if an explicit lender demo session exists in sessionStorage for this browser tab
       try {
         const demoStored = sessionStorage.getItem('curify_demo_user');
@@ -96,7 +103,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           if (u?.role === 'lender') {
             setUser(u);
             setLoading(false);
-            return;
+            return u;
           }
         }
       } catch {
@@ -105,10 +112,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setUser(null);
       localStorage.removeItem('curify_user');
       setLoading(false);
-      return;
+      return null;
     }
 
-    if (isSyncingRef.current) return;
+    if (isSyncingRef.current) {
+      const stored = localStorage.getItem('curify_user');
+      return stored ? JSON.parse(stored) : user;
+    }
     isSyncingRef.current = true;
 
     try {
@@ -116,45 +126,47 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const me = await api.auth.getMe();
       const u: User = {
         id: me.id,
-        clerkUserId: clerkUser.id,
-        name: me.name || `${clerkUser.firstName || ''} ${clerkUser.lastName || ''}`.trim() || 'Patient',
-        firstName: clerkUser.firstName || me.first_name || '',
-        lastName: clerkUser.lastName || me.last_name || '',
-        email: me.email || clerkUser.primaryEmailAddress?.emailAddress || '',
-        role: me.role || (clerkUser.publicMetadata?.role as UserRole) || 'patient',
-        phone: me.phone || clerkUser.phoneNumbers?.[0]?.phoneNumber || '',
+        clerkUserId: activeClerkUser.id,
+        name: me.name || `${activeClerkUser.firstName || ''} ${activeClerkUser.lastName || ''}`.trim() || 'Patient',
+        firstName: activeClerkUser.firstName || me.first_name || '',
+        lastName: activeClerkUser.lastName || me.last_name || '',
+        email: me.email || activeClerkUser.primaryEmailAddress?.emailAddress || '',
+        role: me.role || (activeClerkUser.publicMetadata?.role as UserRole) || 'patient',
+        phone: me.phone || activeClerkUser.phoneNumbers?.[0]?.phoneNumber || '',
         onboardingCompleted: me.profile?.onboarding_completed ?? (me.role === 'patient' ? false : true),
       };
       setUser(u);
       localStorage.setItem('curify_user', JSON.stringify(u));
-      syncedUserIdRef.current = clerkUser.id;
+      syncedUserIdRef.current = activeClerkUser.id;
 
       // Fetch the extended profile
       if (u.role === 'patient') {
         await fetchProfile();
       }
+      return u;
     } catch (err) {
       console.warn('[AuthContext] Backend sync fallback:', err);
       // Fallback to Clerk identity in memory
-      const role = (clerkUser.publicMetadata?.role as UserRole) || 'patient';
+      const role = (activeClerkUser.publicMetadata?.role as UserRole) || 'patient';
       const u: User = {
-        id: clerkUser.id,
-        clerkUserId: clerkUser.id,
-        name: `${clerkUser.firstName || ''} ${clerkUser.lastName || ''}`.trim() || 'Patient',
-        firstName: clerkUser.firstName || '',
-        lastName: clerkUser.lastName || '',
-        email: clerkUser.primaryEmailAddress?.emailAddress || '',
+        id: activeClerkUser.id,
+        clerkUserId: activeClerkUser.id,
+        name: `${activeClerkUser.firstName || ''} ${activeClerkUser.lastName || ''}`.trim() || 'Patient',
+        firstName: activeClerkUser.firstName || '',
+        lastName: activeClerkUser.lastName || '',
+        email: activeClerkUser.primaryEmailAddress?.emailAddress || '',
         role,
         onboardingCompleted: role === 'patient' ? false : true,
       };
       setUser(u);
       localStorage.setItem('curify_user', JSON.stringify(u));
-      syncedUserIdRef.current = clerkUser.id;
+      syncedUserIdRef.current = activeClerkUser.id;
+      return u;
     } finally {
       setLoading(false);
       isSyncingRef.current = false;
     }
-  }, [isSignedIn, clerkUser?.id, fetchProfile]);
+  }, [isSignedIn, clerkUser, clerk, fetchProfile, user]);
 
   useEffect(() => {
     if (clerkLoaded) {
@@ -198,8 +210,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, [clerkLoaded, isSignedIn, clerkUser?.id, syncWithBackend]);
 
-  const refreshUser = useCallback(async () => {
-    await syncWithBackend();
+  const refreshUser = useCallback(async (): Promise<User | null> => {
+    return await syncWithBackend();
   }, [syncWithBackend]);
 
   const login = useCallback(
@@ -320,6 +332,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         login,
         register,
         logout,
+        syncWithBackend,
         refreshUser,
         fetchProfile,
       }}
