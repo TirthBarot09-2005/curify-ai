@@ -399,6 +399,18 @@ CURIFY_TEST/
 
 ### 2. Authentication & Login (`Login.tsx` & `login-ambient.css`)
 - **Clerk-Powered Authentication:** Email/password and Google SSO authentication integrated via `@clerk/clerk-react` with custom OTP verification and password reset workflows.
+- **Custom Clerk Two-Factor & Device Trust OTP Flow:**
+  - Accurately captures `needs_second_factor` and `needs_client_trust` states from Clerk during password sign-in.
+  - Automatically targets `strategy: 'email_code'` and calls `signIn.prepareSecondFactor()` to dispatch the verification code to the registered email before rendering the OTP entry interface.
+  - Submits the 6-digit code via `signIn.attemptSecondFactor()` and activates the session with `setSignInActive`.
+  - Built-in 60-second resend countdown timer with automatic factor recovery and error messaging for expired/incorrect codes.
+- **Immediate Frame-1 Patient Auth Transition Overlay (`PatientAuthOverlay.tsx`):**
+  - Renders an immediate, full-screen brand transition card on the exact frame an authentication event (login, OTP submission, logout) is triggered.
+  - Features smooth 260ms fade-out animation once the target route is mounted, eliminating white flashes, layout shifts, or route bouncing.
+- **Intelligent Returning Patient Route Resolution:**
+  - Resolves multi-source onboarding completion across Clerk metadata (`publicMetadata` & `unsafeMetadata`), persistent local indicators (`curify_onboarding_done_<id>`), and PostgreSQL profile state.
+  - Ensures returning patients who undergo OTP verification or password sign-in are routed directly to their patient dashboard (`/patient`) rather than being inappropriately bounced into `/patient/onboarding`.
+  - Safe fallback in `AuthContext.tsx` preserves known completed or skipped status even if backend sync encounters a transient network delay or unauthenticated initial request.
 - **Patient-Dedicated Account Creation:** Signup is strictly dedicated to patients. Lenders and underwriters sign in using assigned partner credentials or launch the underwriter portal preview drawer.
 - **Centered-Card Ambient Composition:**
   - **Aesthetic Refinement:** Restrained healthcare-fintech aesthetic featuring a quiet warm-neutral background (`#fbfdfc` to `#f7faf9`), softened atmospheric teal/mint gradients (`100px+` blur), and a gentle SVG ambient wave.
@@ -500,6 +512,9 @@ CURIFY_TEST/
 
 ### 12. Lender Dashboard (`lender/Dashboard.tsx`)
 - Broker Marketplace Console with high-level KPI cards (total dossiers, pending review queue, approved volume, average portfolio risk score, conversion rates)
+- **Instant Preview Portal & Zero-Delay Staging:** Underwriter preview launches immediately with zero network delay, backed by simulated portfolio fallback records for seamless client review without requiring production database seeding.
+- **Infinite Render Loop Elimination:** Decoupled cyclic dependencies between `syncWithBackend` and active user states in `AuthContext.tsx`, eliminating React's `Maximum update depth exceeded` error.
+- **Production SPA Route Preservation (`public/_redirects`):** Configured Netlify SPA route rewrites (`/* /index.html 200`) ensuring deep links (`/lender`, `/patient/onboarding`, `/patient/case`) and direct page refreshes resolve cleanly without 404 errors.
 - Quick action shortcuts to pending high-priority dossiers
 - Portfolio risk distribution breakdown
 
@@ -780,8 +795,21 @@ User opens app
   │
   ├─ Clerk SSO & Direct Patient Login (/login)
   │   │
-  │   ├─ Active Session Auto-Route: Authenticated users are redirected immediately
-  │   │  to /patient (or /patient/onboarding), eliminating session deadlock on /login
+  │   ├─ PatientAuthOverlay: Synchronous Frame-1 transition card rendered immediately
+  │   │  on sign-in, OTP submission, and logout (smooth 260ms fade-out)
+  │   │
+  │   ├─ Two-Step / Device Trust OTP Flow:
+  │   │  - signIn.create() returns 'needs_second_factor' or 'needs_client_trust'
+  │   │  - signIn.prepareSecondFactor({ strategy: 'email_code' }) dispatches code to inbox
+  │   │  - User submits 6-digit code via signIn.attemptSecondFactor()
+  │   │  - setSignInActive({ session }) securely hydrates active Clerk session
+  │   │
+  │   ├─ Intelligent Onboarding Resolution:
+  │   │  - Checks multi-source completion: Clerk public/unsafe metadata, persistent local
+  │   │    flag (curify_onboarding_done_<id>), and PostgreSQL patient_profile
+  │   │  - Returning sign-in patients navigate directly to Dashboard (/patient)
+  │   │  - Brand-new signups (mode='signup') navigate to Onboarding (/patient/onboarding)
+  │   │
   │   ├─ Immediate Session Hydration: Memory and localStorage are populated before
   │   │  route transitions, preventing ProtectedRoute timing race conditions
   │   ├─ Autofill Resilience: Catches session_exists from Clerk and smoothly directs
@@ -794,15 +822,17 @@ User opens app
   │       │
   │       ├─ auth.ts middleware extracts clerk_user_id
   │       ├─ Looks up user in PostgreSQL by clerk_user_id
-  │       ├─ If not found → AUTO-CREATES user + profile
+  │       ├─ If not found → AUTO-CREATES user + profile (reading onboarding metadata)
   │       └─ Attaches user to req.user
   │
   └─ Lender Desk (Demo & Direct Login)
       │
       ├─ Quick Access: "Explore Lender Underwriter Portal" on login screen
+      ├─ Preview Mode: Instant 0ms console access with simulated portfolio fallback
       ├─ Credential Login: lender@curify.ai / Curify@2026 (or neha@curify.ai)
       ├─ Session Scoping: Isolated in sessionStorage (curify_demo_user) so
       │  refreshing in a new tab or returning to home does not leak sticky logins
+      ├─ Production SPA Support: Netlify _redirects ensures deep links never 404
       └─ API Transport: JWT token + x-demo-role header fallback in auth middleware
 ```
 
@@ -888,6 +918,14 @@ Procedures are categorized across 5 clinical surgical & diagnostic disciplines:
 7. **RoleGuard Variadic & Array Support:** The `requireRole` middleware automatically flattens role arguments (`roles.flat()`), ensuring both `requireRole('lender')` and `requireRole(['lender', 'admin'])` route contracts function correctly.
 
 8. **Hospital Data is Seeded:** Hospital and procedure data are pre-seeded across 5 Indian cities with differentiated geographic economics multipliers and facility tiers. Prices are realistic benchmarks modeled on market research.
+
+9. **Custom Clerk Second-Factor & Device Trust OTP Flow (Resolved):** When Clerk requires two-step verification (`needs_second_factor`) or device challenge (`needs_client_trust`), `Login.tsx` inspects `supportedSecondFactors`, targets `email_code`, and dispatches the code with `signIn.prepareSecondFactor({ strategy: 'email_code', emailAddressId })` prior to switching to the OTP entry screen. Code submission uses `signIn.attemptSecondFactor({ strategy: 'email_code', code })`, guaranteeing users reliably receive and verify their 6-digit email code.
+
+10. **Synchronous Frame-1 Patient Auth Transition Overlay (Resolved):** In `PatientAuthOverlay.tsx`, Curify renders an immediate full-screen transition card on Frame 1 of any authentication action (login, OTP submit, logout), followed by a smooth 260ms fade-out once the target view mounts. This eliminates dark flashes, layout jumps, or jarring transitions across route changes.
+
+11. **Returning Patient Onboarding Retention & Multi-Source Status Sync (Resolved):** Returning patients who undergo OTP verification are no longer inappropriately bounced to `/patient/onboarding`. Onboarding completion is determined across Clerk metadata (`publicMetadata`, `unsafeMetadata`), persistent local flags (`curify_onboarding_done_<id>`), and PostgreSQL profile records. Furthermore, `AuthContext.tsx` fallback logic preserves completed or skipped status rather than resetting it to `false` during transient sync delays.
+
+12. **Production SPA Client-Side Routing with Netlify Rewrites (Resolved):** Built with React Router v7 on Netlify. Deep links (`/lender`, `/patient/onboarding`, `/patient/case`) and direct browser reloads are mapped via `public/_redirects` (`/* /index.html 200`), eliminating HTTP 404 errors during page refresh. Underwriter preview mode operates with instantaneous zero-delay portfolio fallbacks.
 
 ---
 
