@@ -1,0 +1,701 @@
+﻿hospital_id,hospital_name,project_city,procedure_name,clinical_category,min_cost,max_cost,estimated_duration,source_url,last_verified,availability_status,pricing_status
+hosp-01-01,Zydus Hospital,Ahmedabad,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-01-01,Zydus Hospital,Ahmedabad,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-01,Zydus Hospital,Ahmedabad,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-01-01,Zydus Hospital,Ahmedabad,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-01-01,Zydus Hospital,Ahmedabad,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-01-01,Zydus Hospital,Ahmedabad,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-01,Zydus Hospital,Ahmedabad,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-01-02,Sterling Hospital,Ahmedabad,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-01-02,Sterling Hospital,Ahmedabad,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-02,Sterling Hospital,Ahmedabad,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-01-02,Sterling Hospital,Ahmedabad,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-01-02,Sterling Hospital,Ahmedabad,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-01-02,Sterling Hospital,Ahmedabad,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-02,Sterling Hospital,Ahmedabad,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-01-03,Apollo Hospitals Ahmedabad,Ahmedabad,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-01-03,Apollo Hospitals Ahmedabad,Ahmedabad,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-03,Apollo Hospitals Ahmedabad,Ahmedabad,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-01-03,Apollo Hospitals Ahmedabad,Ahmedabad,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-01-03,Apollo Hospitals Ahmedabad,Ahmedabad,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-01-03,Apollo Hospitals Ahmedabad,Ahmedabad,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-03,Apollo Hospitals Ahmedabad,Ahmedabad,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-01-04,HCG Cancer Centre,Ahmedabad,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-01-04,HCG Cancer Centre,Ahmedabad,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-04,HCG Cancer Centre,Ahmedabad,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-01-04,HCG Cancer Centre,Ahmedabad,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-01-04,HCG Cancer Centre,Ahmedabad,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-01-04,HCG Cancer Centre,Ahmedabad,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-04,HCG Cancer Centre,Ahmedabad,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-01-05,Civil Hospital Ahmedabad,Ahmedabad,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-01-05,Civil Hospital Ahmedabad,Ahmedabad,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-05,Civil Hospital Ahmedabad,Ahmedabad,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-01-05,Civil Hospital Ahmedabad,Ahmedabad,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-01-05,Civil Hospital Ahmedabad,Ahmedabad,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-01-05,Civil Hospital Ahmedabad,Ahmedabad,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-05,Civil Hospital Ahmedabad,Ahmedabad,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-01-06,CIMS Hospital,Ahmedabad,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-01-06,CIMS Hospital,Ahmedabad,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-06,CIMS Hospital,Ahmedabad,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-01-06,CIMS Hospital,Ahmedabad,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-01-06,CIMS Hospital,Ahmedabad,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-01-06,CIMS Hospital,Ahmedabad,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-06,CIMS Hospital,Ahmedabad,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-01-07,Shalby Hospital,Ahmedabad,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-01-07,Shalby Hospital,Ahmedabad,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-07,Shalby Hospital,Ahmedabad,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-01-07,Shalby Hospital,Ahmedabad,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-01-07,Shalby Hospital,Ahmedabad,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-01-07,Shalby Hospital,Ahmedabad,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-07,Shalby Hospital,Ahmedabad,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-01-08,UN Mehta Institute of Cardiology,Ahmedabad,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-01-08,UN Mehta Institute of Cardiology,Ahmedabad,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-08,UN Mehta Institute of Cardiology,Ahmedabad,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-01-08,UN Mehta Institute of Cardiology,Ahmedabad,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-01-08,UN Mehta Institute of Cardiology,Ahmedabad,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-01-08,UN Mehta Institute of Cardiology,Ahmedabad,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-08,UN Mehta Institute of Cardiology,Ahmedabad,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-01-09,KD Hospital,Ahmedabad,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-01-09,KD Hospital,Ahmedabad,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-09,KD Hospital,Ahmedabad,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-01-09,KD Hospital,Ahmedabad,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-01-09,KD Hospital,Ahmedabad,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-01-09,KD Hospital,Ahmedabad,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-09,KD Hospital,Ahmedabad,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-01-10,Narayana Multispeciality Ahmedabad,Ahmedabad,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-01-10,Narayana Multispeciality Ahmedabad,Ahmedabad,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-10,Narayana Multispeciality Ahmedabad,Ahmedabad,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-01-10,Narayana Multispeciality Ahmedabad,Ahmedabad,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-01-10,Narayana Multispeciality Ahmedabad,Ahmedabad,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-01-10,Narayana Multispeciality Ahmedabad,Ahmedabad,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-10,Narayana Multispeciality Ahmedabad,Ahmedabad,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-01-11,SAL Hospital,Ahmedabad,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-01-11,SAL Hospital,Ahmedabad,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-11,SAL Hospital,Ahmedabad,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-01-11,SAL Hospital,Ahmedabad,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-01-11,SAL Hospital,Ahmedabad,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-01-11,SAL Hospital,Ahmedabad,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-11,SAL Hospital,Ahmedabad,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-01-12,VS General Hospital,Ahmedabad,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-01-12,VS General Hospital,Ahmedabad,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-12,VS General Hospital,Ahmedabad,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-01-12,VS General Hospital,Ahmedabad,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-01-12,VS General Hospital,Ahmedabad,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-01-12,VS General Hospital,Ahmedabad,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-12,VS General Hospital,Ahmedabad,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-01-13,Rajasthan Hospital Ahmedabad,Ahmedabad,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-01-13,Rajasthan Hospital Ahmedabad,Ahmedabad,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-13,Rajasthan Hospital Ahmedabad,Ahmedabad,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-01-13,Rajasthan Hospital Ahmedabad,Ahmedabad,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-01-13,Rajasthan Hospital Ahmedabad,Ahmedabad,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-01-13,Rajasthan Hospital Ahmedabad,Ahmedabad,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-13,Rajasthan Hospital Ahmedabad,Ahmedabad,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-01-14,GCS Medical College and Hospital,Ahmedabad,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-01-14,GCS Medical College and Hospital,Ahmedabad,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-14,GCS Medical College and Hospital,Ahmedabad,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-01-14,GCS Medical College and Hospital,Ahmedabad,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-01-14,GCS Medical College and Hospital,Ahmedabad,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-01-14,GCS Medical College and Hospital,Ahmedabad,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-14,GCS Medical College and Hospital,Ahmedabad,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-01-15,Shalby Hospital Naroda,Ahmedabad,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-01-15,Shalby Hospital Naroda,Ahmedabad,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-15,Shalby Hospital Naroda,Ahmedabad,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-01-15,Shalby Hospital Naroda,Ahmedabad,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-01-15,Shalby Hospital Naroda,Ahmedabad,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-01-15,Shalby Hospital Naroda,Ahmedabad,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-15,Shalby Hospital Naroda,Ahmedabad,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-01-16,Krishna Shalby Multispeciality Hospital,Ahmedabad,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-01-16,Krishna Shalby Multispeciality Hospital,Ahmedabad,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-16,Krishna Shalby Multispeciality Hospital,Ahmedabad,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-01-16,Krishna Shalby Multispeciality Hospital,Ahmedabad,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-01-16,Krishna Shalby Multispeciality Hospital,Ahmedabad,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-01-16,Krishna Shalby Multispeciality Hospital,Ahmedabad,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-16,Krishna Shalby Multispeciality Hospital,Ahmedabad,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-01-17,Sterling Hospital Sindhubhavan,Ahmedabad,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-01-17,Sterling Hospital Sindhubhavan,Ahmedabad,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-17,Sterling Hospital Sindhubhavan,Ahmedabad,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-01-17,Sterling Hospital Sindhubhavan,Ahmedabad,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-01-17,Sterling Hospital Sindhubhavan,Ahmedabad,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-01-17,Sterling Hospital Sindhubhavan,Ahmedabad,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-17,Sterling Hospital Sindhubhavan,Ahmedabad,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-01-18,Asian Bariatrics Hospital,Ahmedabad,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-01-18,Asian Bariatrics Hospital,Ahmedabad,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-18,Asian Bariatrics Hospital,Ahmedabad,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-01-18,Asian Bariatrics Hospital,Ahmedabad,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-01-18,Asian Bariatrics Hospital,Ahmedabad,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-01-18,Asian Bariatrics Hospital,Ahmedabad,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-18,Asian Bariatrics Hospital,Ahmedabad,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-01-19,Apex Heart Institute,Ahmedabad,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-01-19,Apex Heart Institute,Ahmedabad,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-19,Apex Heart Institute,Ahmedabad,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-01-19,Apex Heart Institute,Ahmedabad,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-01-19,Apex Heart Institute,Ahmedabad,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-01-19,Apex Heart Institute,Ahmedabad,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-19,Apex Heart Institute,Ahmedabad,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-01-20,Nidhi Hospital,Ahmedabad,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-01-20,Nidhi Hospital,Ahmedabad,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-20,Nidhi Hospital,Ahmedabad,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-01-20,Nidhi Hospital,Ahmedabad,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-01-20,Nidhi Hospital,Ahmedabad,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-01-20,Nidhi Hospital,Ahmedabad,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-01-20,Nidhi Hospital,Ahmedabad,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-02-01,Tata Memorial Hospital,Mumbai,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-02-01,Tata Memorial Hospital,Mumbai,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-01,Tata Memorial Hospital,Mumbai,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-02-01,Tata Memorial Hospital,Mumbai,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-02-01,Tata Memorial Hospital,Mumbai,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-02-01,Tata Memorial Hospital,Mumbai,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-01,Tata Memorial Hospital,Mumbai,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-02-02,Asian Heart Institute,Mumbai,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-02-02,Asian Heart Institute,Mumbai,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-02,Asian Heart Institute,Mumbai,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-02-02,Asian Heart Institute,Mumbai,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-02-02,Asian Heart Institute,Mumbai,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-02-02,Asian Heart Institute,Mumbai,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-02,Asian Heart Institute,Mumbai,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-02-03,Kokilaben Dhirubhai Ambani,Mumbai,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-02-03,Kokilaben Dhirubhai Ambani,Mumbai,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-03,Kokilaben Dhirubhai Ambani,Mumbai,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-02-03,Kokilaben Dhirubhai Ambani,Mumbai,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-02-03,Kokilaben Dhirubhai Ambani,Mumbai,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-02-03,Kokilaben Dhirubhai Ambani,Mumbai,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-03,Kokilaben Dhirubhai Ambani,Mumbai,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-02-04,Lilavati Hospital,Mumbai,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-02-04,Lilavati Hospital,Mumbai,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-04,Lilavati Hospital,Mumbai,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-02-04,Lilavati Hospital,Mumbai,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-02-04,Lilavati Hospital,Mumbai,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-02-04,Lilavati Hospital,Mumbai,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-04,Lilavati Hospital,Mumbai,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-02-05,Hinduja Hospital Mahim,Mumbai,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-02-05,Hinduja Hospital Mahim,Mumbai,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-05,Hinduja Hospital Mahim,Mumbai,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-02-05,Hinduja Hospital Mahim,Mumbai,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-02-05,Hinduja Hospital Mahim,Mumbai,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-02-05,Hinduja Hospital Mahim,Mumbai,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-05,Hinduja Hospital Mahim,Mumbai,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-02-06,HN Reliance Foundation,Mumbai,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-02-06,HN Reliance Foundation,Mumbai,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-06,HN Reliance Foundation,Mumbai,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-02-06,HN Reliance Foundation,Mumbai,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-02-06,HN Reliance Foundation,Mumbai,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-02-06,HN Reliance Foundation,Mumbai,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-06,HN Reliance Foundation,Mumbai,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-02-07,Jaslok Hospital,Mumbai,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-02-07,Jaslok Hospital,Mumbai,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-07,Jaslok Hospital,Mumbai,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-02-07,Jaslok Hospital,Mumbai,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-02-07,Jaslok Hospital,Mumbai,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-02-07,Jaslok Hospital,Mumbai,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-07,Jaslok Hospital,Mumbai,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-02-08,Nanavati Max Hospital,Mumbai,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-02-08,Nanavati Max Hospital,Mumbai,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-08,Nanavati Max Hospital,Mumbai,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-02-08,Nanavati Max Hospital,Mumbai,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-02-08,Nanavati Max Hospital,Mumbai,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-02-08,Nanavati Max Hospital,Mumbai,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-08,Nanavati Max Hospital,Mumbai,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-02-09,Breach Candy Hospital,Mumbai,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-02-09,Breach Candy Hospital,Mumbai,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-09,Breach Candy Hospital,Mumbai,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-02-09,Breach Candy Hospital,Mumbai,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-02-09,Breach Candy Hospital,Mumbai,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-02-09,Breach Candy Hospital,Mumbai,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-09,Breach Candy Hospital,Mumbai,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-02-10,Surya Hospital Santacruz,Mumbai,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-02-10,Surya Hospital Santacruz,Mumbai,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-10,Surya Hospital Santacruz,Mumbai,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-02-10,Surya Hospital Santacruz,Mumbai,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-02-10,Surya Hospital Santacruz,Mumbai,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-02-10,Surya Hospital Santacruz,Mumbai,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-10,Surya Hospital Santacruz,Mumbai,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-02-11,KEM Hospital,Mumbai,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-02-11,KEM Hospital,Mumbai,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-11,KEM Hospital,Mumbai,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-02-11,KEM Hospital,Mumbai,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-02-11,KEM Hospital,Mumbai,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-02-11,KEM Hospital,Mumbai,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-11,KEM Hospital,Mumbai,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-02-12,Bombay Hospital,Mumbai,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-02-12,Bombay Hospital,Mumbai,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-12,Bombay Hospital,Mumbai,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-02-12,Bombay Hospital,Mumbai,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-02-12,Bombay Hospital,Mumbai,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-02-12,Bombay Hospital,Mumbai,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-12,Bombay Hospital,Mumbai,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-02-13,Hiranandani Hospital Powai,Mumbai,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-02-13,Hiranandani Hospital Powai,Mumbai,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-13,Hiranandani Hospital Powai,Mumbai,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-02-13,Hiranandani Hospital Powai,Mumbai,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-02-13,Hiranandani Hospital Powai,Mumbai,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-02-13,Hiranandani Hospital Powai,Mumbai,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-13,Hiranandani Hospital Powai,Mumbai,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-02-14,Saifee Hospital,Mumbai,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-02-14,Saifee Hospital,Mumbai,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-14,Saifee Hospital,Mumbai,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-02-14,Saifee Hospital,Mumbai,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-02-14,Saifee Hospital,Mumbai,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-02-14,Saifee Hospital,Mumbai,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-14,Saifee Hospital,Mumbai,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-02-15,Fortis Mulund,Mumbai,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-02-15,Fortis Mulund,Mumbai,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-15,Fortis Mulund,Mumbai,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-02-15,Fortis Mulund,Mumbai,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-02-15,Fortis Mulund,Mumbai,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-02-15,Fortis Mulund,Mumbai,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-15,Fortis Mulund,Mumbai,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-02-16,Bhatia Hospital,Mumbai,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-02-16,Bhatia Hospital,Mumbai,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-16,Bhatia Hospital,Mumbai,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-02-16,Bhatia Hospital,Mumbai,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-02-16,Bhatia Hospital,Mumbai,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-02-16,Bhatia Hospital,Mumbai,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-16,Bhatia Hospital,Mumbai,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-02-17,Wockhardt Hospital,Mumbai,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-02-17,Wockhardt Hospital,Mumbai,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-17,Wockhardt Hospital,Mumbai,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-02-17,Wockhardt Hospital,Mumbai,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-02-17,Wockhardt Hospital,Mumbai,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-02-17,Wockhardt Hospital,Mumbai,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-17,Wockhardt Hospital,Mumbai,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-02-18,Global Hospital Mumbai,Mumbai,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-02-18,Global Hospital Mumbai,Mumbai,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-18,Global Hospital Mumbai,Mumbai,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-02-18,Global Hospital Mumbai,Mumbai,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-02-18,Global Hospital Mumbai,Mumbai,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-02-18,Global Hospital Mumbai,Mumbai,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-18,Global Hospital Mumbai,Mumbai,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-02-19,Holy Spirit Hospital,Mumbai,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-02-19,Holy Spirit Hospital,Mumbai,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-19,Holy Spirit Hospital,Mumbai,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-02-19,Holy Spirit Hospital,Mumbai,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-02-19,Holy Spirit Hospital,Mumbai,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-02-19,Holy Spirit Hospital,Mumbai,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-19,Holy Spirit Hospital,Mumbai,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-02-20,P D Hinduja Hospital Khar,Mumbai,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-02-20,P D Hinduja Hospital Khar,Mumbai,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-20,P D Hinduja Hospital Khar,Mumbai,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-02-20,P D Hinduja Hospital Khar,Mumbai,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-02-20,P D Hinduja Hospital Khar,Mumbai,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-02-20,P D Hinduja Hospital Khar,Mumbai,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-02-20,P D Hinduja Hospital Khar,Mumbai,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-03-01,AIIMS Delhi,Delhi NCR,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-03-01,AIIMS Delhi,Delhi NCR,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-01,AIIMS Delhi,Delhi NCR,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-03-01,AIIMS Delhi,Delhi NCR,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-03-01,AIIMS Delhi,Delhi NCR,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-03-01,AIIMS Delhi,Delhi NCR,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-01,AIIMS Delhi,Delhi NCR,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-03-02,Sir Ganga Ram Hospital,Delhi NCR,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-03-02,Sir Ganga Ram Hospital,Delhi NCR,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-02,Sir Ganga Ram Hospital,Delhi NCR,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-03-02,Sir Ganga Ram Hospital,Delhi NCR,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-03-02,Sir Ganga Ram Hospital,Delhi NCR,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-03-02,Sir Ganga Ram Hospital,Delhi NCR,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-02,Sir Ganga Ram Hospital,Delhi NCR,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-03-03,Max Super Speciality Saket,Delhi NCR,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-03-03,Max Super Speciality Saket,Delhi NCR,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-03,Max Super Speciality Saket,Delhi NCR,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-03-03,Max Super Speciality Saket,Delhi NCR,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-03-03,Max Super Speciality Saket,Delhi NCR,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-03-03,Max Super Speciality Saket,Delhi NCR,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-03,Max Super Speciality Saket,Delhi NCR,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-03-04,Fortis Escorts Heart Institute,Delhi NCR,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-03-04,Fortis Escorts Heart Institute,Delhi NCR,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-04,Fortis Escorts Heart Institute,Delhi NCR,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-03-04,Fortis Escorts Heart Institute,Delhi NCR,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-03-04,Fortis Escorts Heart Institute,Delhi NCR,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-03-04,Fortis Escorts Heart Institute,Delhi NCR,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-04,Fortis Escorts Heart Institute,Delhi NCR,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-03-05,BLK-Max Super Speciality,Delhi NCR,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-03-05,BLK-Max Super Speciality,Delhi NCR,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-05,BLK-Max Super Speciality,Delhi NCR,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-03-05,BLK-Max Super Speciality,Delhi NCR,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-03-05,BLK-Max Super Speciality,Delhi NCR,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-03-05,BLK-Max Super Speciality,Delhi NCR,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-05,BLK-Max Super Speciality,Delhi NCR,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-03-06,Safdarjung Hospital,Delhi NCR,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-03-06,Safdarjung Hospital,Delhi NCR,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-06,Safdarjung Hospital,Delhi NCR,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-03-06,Safdarjung Hospital,Delhi NCR,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-03-06,Safdarjung Hospital,Delhi NCR,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-03-06,Safdarjung Hospital,Delhi NCR,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-06,Safdarjung Hospital,Delhi NCR,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-03-07,Indraprastha Apollo,Delhi NCR,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-03-07,Indraprastha Apollo,Delhi NCR,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-07,Indraprastha Apollo,Delhi NCR,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-03-07,Indraprastha Apollo,Delhi NCR,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-03-07,Indraprastha Apollo,Delhi NCR,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-03-07,Indraprastha Apollo,Delhi NCR,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-07,Indraprastha Apollo,Delhi NCR,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-03-08,RML Hospital,Delhi NCR,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-03-08,RML Hospital,Delhi NCR,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-08,RML Hospital,Delhi NCR,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-03-08,RML Hospital,Delhi NCR,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-03-08,RML Hospital,Delhi NCR,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-03-08,RML Hospital,Delhi NCR,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-08,RML Hospital,Delhi NCR,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-03-09,Lok Nayak Hospital,Delhi NCR,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-03-09,Lok Nayak Hospital,Delhi NCR,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-09,Lok Nayak Hospital,Delhi NCR,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-03-09,Lok Nayak Hospital,Delhi NCR,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-03-09,Lok Nayak Hospital,Delhi NCR,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-03-09,Lok Nayak Hospital,Delhi NCR,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-09,Lok Nayak Hospital,Delhi NCR,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-03-10,Moolchand Hospital,Delhi NCR,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-03-10,Moolchand Hospital,Delhi NCR,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-10,Moolchand Hospital,Delhi NCR,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-03-10,Moolchand Hospital,Delhi NCR,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-03-10,Moolchand Hospital,Delhi NCR,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-03-10,Moolchand Hospital,Delhi NCR,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-10,Moolchand Hospital,Delhi NCR,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-03-11,Rajiv Gandhi Cancer Institute,Delhi NCR,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-03-11,Rajiv Gandhi Cancer Institute,Delhi NCR,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-11,Rajiv Gandhi Cancer Institute,Delhi NCR,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-03-11,Rajiv Gandhi Cancer Institute,Delhi NCR,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-03-11,Rajiv Gandhi Cancer Institute,Delhi NCR,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-03-11,Rajiv Gandhi Cancer Institute,Delhi NCR,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-11,Rajiv Gandhi Cancer Institute,Delhi NCR,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-03-12,Dharamshila Narayana,Delhi NCR,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-03-12,Dharamshila Narayana,Delhi NCR,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-12,Dharamshila Narayana,Delhi NCR,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-03-12,Dharamshila Narayana,Delhi NCR,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-03-12,Dharamshila Narayana,Delhi NCR,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-03-12,Dharamshila Narayana,Delhi NCR,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-12,Dharamshila Narayana,Delhi NCR,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-03-13,Primus Super Speciality,Delhi NCR,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-03-13,Primus Super Speciality,Delhi NCR,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-13,Primus Super Speciality,Delhi NCR,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-03-13,Primus Super Speciality,Delhi NCR,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-03-13,Primus Super Speciality,Delhi NCR,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-03-13,Primus Super Speciality,Delhi NCR,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-13,Primus Super Speciality,Delhi NCR,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-03-14,Venkateshwar Hospital,Delhi NCR,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-03-14,Venkateshwar Hospital,Delhi NCR,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-14,Venkateshwar Hospital,Delhi NCR,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-03-14,Venkateshwar Hospital,Delhi NCR,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-03-14,Venkateshwar Hospital,Delhi NCR,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-03-14,Venkateshwar Hospital,Delhi NCR,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-14,Venkateshwar Hospital,Delhi NCR,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-03-15,Manipal Hospital Dwarka,Delhi NCR,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-03-15,Manipal Hospital Dwarka,Delhi NCR,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-15,Manipal Hospital Dwarka,Delhi NCR,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-03-15,Manipal Hospital Dwarka,Delhi NCR,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-03-15,Manipal Hospital Dwarka,Delhi NCR,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-03-15,Manipal Hospital Dwarka,Delhi NCR,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-15,Manipal Hospital Dwarka,Delhi NCR,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-03-16,Fortis Hospital Shalimar Bagh,Delhi NCR,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-03-16,Fortis Hospital Shalimar Bagh,Delhi NCR,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-16,Fortis Hospital Shalimar Bagh,Delhi NCR,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-03-16,Fortis Hospital Shalimar Bagh,Delhi NCR,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-03-16,Fortis Hospital Shalimar Bagh,Delhi NCR,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-03-16,Fortis Hospital Shalimar Bagh,Delhi NCR,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-16,Fortis Hospital Shalimar Bagh,Delhi NCR,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-03-17,Holy Family Hospital,Delhi NCR,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-03-17,Holy Family Hospital,Delhi NCR,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-17,Holy Family Hospital,Delhi NCR,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-03-17,Holy Family Hospital,Delhi NCR,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-03-17,Holy Family Hospital,Delhi NCR,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-03-17,Holy Family Hospital,Delhi NCR,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-17,Holy Family Hospital,Delhi NCR,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-03-18,GTB Hospital,Delhi NCR,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-03-18,GTB Hospital,Delhi NCR,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-18,GTB Hospital,Delhi NCR,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-03-18,GTB Hospital,Delhi NCR,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-03-18,GTB Hospital,Delhi NCR,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-03-18,GTB Hospital,Delhi NCR,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-18,GTB Hospital,Delhi NCR,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-03-19,Sri Balaji Action Medical Institute,Delhi NCR,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-03-19,Sri Balaji Action Medical Institute,Delhi NCR,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-19,Sri Balaji Action Medical Institute,Delhi NCR,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-03-19,Sri Balaji Action Medical Institute,Delhi NCR,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-03-19,Sri Balaji Action Medical Institute,Delhi NCR,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-03-19,Sri Balaji Action Medical Institute,Delhi NCR,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-19,Sri Balaji Action Medical Institute,Delhi NCR,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-03-20,Max Super Speciality Patparganj,Delhi NCR,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-03-20,Max Super Speciality Patparganj,Delhi NCR,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-20,Max Super Speciality Patparganj,Delhi NCR,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-03-20,Max Super Speciality Patparganj,Delhi NCR,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-03-20,Max Super Speciality Patparganj,Delhi NCR,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-03-20,Max Super Speciality Patparganj,Delhi NCR,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-03-20,Max Super Speciality Patparganj,Delhi NCR,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-04-01,Narayana Health City,Bengaluru,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-04-01,Narayana Health City,Bengaluru,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-01,Narayana Health City,Bengaluru,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-04-01,Narayana Health City,Bengaluru,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-04-01,Narayana Health City,Bengaluru,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-04-01,Narayana Health City,Bengaluru,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-01,Narayana Health City,Bengaluru,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-04-02,NIMHANS,Bengaluru,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-04-02,NIMHANS,Bengaluru,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-02,NIMHANS,Bengaluru,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-04-02,NIMHANS,Bengaluru,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-04-02,NIMHANS,Bengaluru,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-04-02,NIMHANS,Bengaluru,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-02,NIMHANS,Bengaluru,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-04-03,Manipal Hospital Old Airport Rd,Bengaluru,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-04-03,Manipal Hospital Old Airport Rd,Bengaluru,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-03,Manipal Hospital Old Airport Rd,Bengaluru,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-04-03,Manipal Hospital Old Airport Rd,Bengaluru,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-04-03,Manipal Hospital Old Airport Rd,Bengaluru,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-04-03,Manipal Hospital Old Airport Rd,Bengaluru,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-03,Manipal Hospital Old Airport Rd,Bengaluru,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-04-04,Aster CMI Hospital,Bengaluru,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-04-04,Aster CMI Hospital,Bengaluru,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-04,Aster CMI Hospital,Bengaluru,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-04-04,Aster CMI Hospital,Bengaluru,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-04-04,Aster CMI Hospital,Bengaluru,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-04-04,Aster CMI Hospital,Bengaluru,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-04,Aster CMI Hospital,Bengaluru,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-04-05,Fortis Bannerghatta,Bengaluru,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-04-05,Fortis Bannerghatta,Bengaluru,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-05,Fortis Bannerghatta,Bengaluru,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-04-05,Fortis Bannerghatta,Bengaluru,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-04-05,Fortis Bannerghatta,Bengaluru,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-04-05,Fortis Bannerghatta,Bengaluru,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-05,Fortis Bannerghatta,Bengaluru,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-04-06,Apollo Bannerghatta,Bengaluru,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-04-06,Apollo Bannerghatta,Bengaluru,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-06,Apollo Bannerghatta,Bengaluru,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-04-06,Apollo Bannerghatta,Bengaluru,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-04-06,Apollo Bannerghatta,Bengaluru,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-04-06,Apollo Bannerghatta,Bengaluru,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-06,Apollo Bannerghatta,Bengaluru,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-04-07,Sakra World Hospital,Bengaluru,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-04-07,Sakra World Hospital,Bengaluru,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-07,Sakra World Hospital,Bengaluru,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-04-07,Sakra World Hospital,Bengaluru,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-04-07,Sakra World Hospital,Bengaluru,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-04-07,Sakra World Hospital,Bengaluru,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-07,Sakra World Hospital,Bengaluru,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-04-08,Jayadeva Institute,Bengaluru,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-04-08,Jayadeva Institute,Bengaluru,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-08,Jayadeva Institute,Bengaluru,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-04-08,Jayadeva Institute,Bengaluru,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-04-08,Jayadeva Institute,Bengaluru,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-04-08,Jayadeva Institute,Bengaluru,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-08,Jayadeva Institute,Bengaluru,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-04-09,Kidwai Memorial Hospital,Bengaluru,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-04-09,Kidwai Memorial Hospital,Bengaluru,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-09,Kidwai Memorial Hospital,Bengaluru,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-04-09,Kidwai Memorial Hospital,Bengaluru,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-04-09,Kidwai Memorial Hospital,Bengaluru,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-04-09,Kidwai Memorial Hospital,Bengaluru,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-09,Kidwai Memorial Hospital,Bengaluru,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-04-10,St. Johns Medical College,Bengaluru,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-04-10,St. Johns Medical College,Bengaluru,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-10,St. Johns Medical College,Bengaluru,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-04-10,St. Johns Medical College,Bengaluru,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-04-10,St. Johns Medical College,Bengaluru,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-04-10,St. Johns Medical College,Bengaluru,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-10,St. Johns Medical College,Bengaluru,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-04-11,HCG Cancer Centre,Bengaluru,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-04-11,HCG Cancer Centre,Bengaluru,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-11,HCG Cancer Centre,Bengaluru,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-04-11,HCG Cancer Centre,Bengaluru,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-04-11,HCG Cancer Centre,Bengaluru,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-04-11,HCG Cancer Centre,Bengaluru,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-11,HCG Cancer Centre,Bengaluru,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-04-12,BGS Gleneagles,Bengaluru,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-04-12,BGS Gleneagles,Bengaluru,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-12,BGS Gleneagles,Bengaluru,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-04-12,BGS Gleneagles,Bengaluru,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-04-12,BGS Gleneagles,Bengaluru,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-04-12,BGS Gleneagles,Bengaluru,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-12,BGS Gleneagles,Bengaluru,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-04-13,MS Ramaiah Memorial,Bengaluru,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-04-13,MS Ramaiah Memorial,Bengaluru,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-13,MS Ramaiah Memorial,Bengaluru,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-04-13,MS Ramaiah Memorial,Bengaluru,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-04-13,MS Ramaiah Memorial,Bengaluru,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-04-13,MS Ramaiah Memorial,Bengaluru,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-13,MS Ramaiah Memorial,Bengaluru,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-04-14,Mazumdar Shaw Medical Centre,Bengaluru,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-04-14,Mazumdar Shaw Medical Centre,Bengaluru,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-14,Mazumdar Shaw Medical Centre,Bengaluru,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-04-14,Mazumdar Shaw Medical Centre,Bengaluru,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-04-14,Mazumdar Shaw Medical Centre,Bengaluru,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-04-14,Mazumdar Shaw Medical Centre,Bengaluru,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-14,Mazumdar Shaw Medical Centre,Bengaluru,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-04-15,Sparsh Hospital,Bengaluru,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-04-15,Sparsh Hospital,Bengaluru,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-15,Sparsh Hospital,Bengaluru,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-04-15,Sparsh Hospital,Bengaluru,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-04-15,Sparsh Hospital,Bengaluru,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-04-15,Sparsh Hospital,Bengaluru,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-15,Sparsh Hospital,Bengaluru,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-04-16,Ramaiah Narayana Heart Centre,Bengaluru,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-04-16,Ramaiah Narayana Heart Centre,Bengaluru,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-16,Ramaiah Narayana Heart Centre,Bengaluru,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-04-16,Ramaiah Narayana Heart Centre,Bengaluru,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-04-16,Ramaiah Narayana Heart Centre,Bengaluru,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-04-16,Ramaiah Narayana Heart Centre,Bengaluru,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-16,Ramaiah Narayana Heart Centre,Bengaluru,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-04-17,Cytecare Cancer Hospital,Bengaluru,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-04-17,Cytecare Cancer Hospital,Bengaluru,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-17,Cytecare Cancer Hospital,Bengaluru,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-04-17,Cytecare Cancer Hospital,Bengaluru,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-04-17,Cytecare Cancer Hospital,Bengaluru,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-04-17,Cytecare Cancer Hospital,Bengaluru,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-17,Cytecare Cancer Hospital,Bengaluru,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-04-18,Rainbow Children's Hospital Marathahalli,Bengaluru,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-04-18,Rainbow Children's Hospital Marathahalli,Bengaluru,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-18,Rainbow Children's Hospital Marathahalli,Bengaluru,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-04-18,Rainbow Children's Hospital Marathahalli,Bengaluru,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-04-18,Rainbow Children's Hospital Marathahalli,Bengaluru,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-04-18,Rainbow Children's Hospital Marathahalli,Bengaluru,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-18,Rainbow Children's Hospital Marathahalli,Bengaluru,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-04-19,Cloudnine Hospital Jayanagar,Bengaluru,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-04-19,Cloudnine Hospital Jayanagar,Bengaluru,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-19,Cloudnine Hospital Jayanagar,Bengaluru,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-04-19,Cloudnine Hospital Jayanagar,Bengaluru,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-04-19,Cloudnine Hospital Jayanagar,Bengaluru,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-04-19,Cloudnine Hospital Jayanagar,Bengaluru,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-19,Cloudnine Hospital Jayanagar,Bengaluru,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-04-20,Aster RV Hospital JP Nagar,Bengaluru,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-04-20,Aster RV Hospital JP Nagar,Bengaluru,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-20,Aster RV Hospital JP Nagar,Bengaluru,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-04-20,Aster RV Hospital JP Nagar,Bengaluru,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-04-20,Aster RV Hospital JP Nagar,Bengaluru,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-04-20,Aster RV Hospital JP Nagar,Bengaluru,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-04-20,Aster RV Hospital JP Nagar,Bengaluru,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-05-01,Ruby Hall Clinic,Pune,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-05-01,Ruby Hall Clinic,Pune,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-01,Ruby Hall Clinic,Pune,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-05-01,Ruby Hall Clinic,Pune,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-05-01,Ruby Hall Clinic,Pune,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-05-01,Ruby Hall Clinic,Pune,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-01,Ruby Hall Clinic,Pune,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-05-02,Sahyadri Hospital,Pune,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-05-02,Sahyadri Hospital,Pune,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-02,Sahyadri Hospital,Pune,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-05-02,Sahyadri Hospital,Pune,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-05-02,Sahyadri Hospital,Pune,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-05-02,Sahyadri Hospital,Pune,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-02,Sahyadri Hospital,Pune,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-05-03,Jehangir Hospital,Pune,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-05-03,Jehangir Hospital,Pune,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-03,Jehangir Hospital,Pune,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-05-03,Jehangir Hospital,Pune,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-05-03,Jehangir Hospital,Pune,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-05-03,Jehangir Hospital,Pune,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-03,Jehangir Hospital,Pune,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-05-04,Deenanath Mangeshkar Hospital,Pune,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-05-04,Deenanath Mangeshkar Hospital,Pune,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-04,Deenanath Mangeshkar Hospital,Pune,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-05-04,Deenanath Mangeshkar Hospital,Pune,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-05-04,Deenanath Mangeshkar Hospital,Pune,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-05-04,Deenanath Mangeshkar Hospital,Pune,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-04,Deenanath Mangeshkar Hospital,Pune,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-05-05,KEM Hospital Pune,Pune,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-05-05,KEM Hospital Pune,Pune,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-05,KEM Hospital Pune,Pune,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-05-05,KEM Hospital Pune,Pune,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-05-05,KEM Hospital Pune,Pune,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-05-05,KEM Hospital Pune,Pune,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-05,KEM Hospital Pune,Pune,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-05-06,Sassoon General Hospital,Pune,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-05-06,Sassoon General Hospital,Pune,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-06,Sassoon General Hospital,Pune,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-05-06,Sassoon General Hospital,Pune,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-05-06,Sassoon General Hospital,Pune,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-05-06,Sassoon General Hospital,Pune,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-06,Sassoon General Hospital,Pune,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-05-07,Aditya Birla Memorial Hospital,Pune,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-05-07,Aditya Birla Memorial Hospital,Pune,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-07,Aditya Birla Memorial Hospital,Pune,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-05-07,Aditya Birla Memorial Hospital,Pune,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-05-07,Aditya Birla Memorial Hospital,Pune,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-05-07,Aditya Birla Memorial Hospital,Pune,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-07,Aditya Birla Memorial Hospital,Pune,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-05-08,Jupiter Hospital Pune,Pune,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-05-08,Jupiter Hospital Pune,Pune,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-08,Jupiter Hospital Pune,Pune,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-05-08,Jupiter Hospital Pune,Pune,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-05-08,Jupiter Hospital Pune,Pune,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-05-08,Jupiter Hospital Pune,Pune,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-08,Jupiter Hospital Pune,Pune,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-05-09,Sancheti Hospital,Pune,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-05-09,Sancheti Hospital,Pune,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-09,Sancheti Hospital,Pune,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-05-09,Sancheti Hospital,Pune,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-05-09,Sancheti Hospital,Pune,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-05-09,Sancheti Hospital,Pune,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-09,Sancheti Hospital,Pune,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-05-10,Noble Hospital Pune,Pune,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-05-10,Noble Hospital Pune,Pune,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-10,Noble Hospital Pune,Pune,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-05-10,Noble Hospital Pune,Pune,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-05-10,Noble Hospital Pune,Pune,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-05-10,Noble Hospital Pune,Pune,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-10,Noble Hospital Pune,Pune,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-05-11,Command Hospital Pune,Pune,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-05-11,Command Hospital Pune,Pune,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-11,Command Hospital Pune,Pune,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-05-11,Command Hospital Pune,Pune,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-05-11,Command Hospital Pune,Pune,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-05-11,Command Hospital Pune,Pune,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-11,Command Hospital Pune,Pune,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-05-12,Bharati Hospital Pune,Pune,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-05-12,Bharati Hospital Pune,Pune,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-12,Bharati Hospital Pune,Pune,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-05-12,Bharati Hospital Pune,Pune,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-05-12,Bharati Hospital Pune,Pune,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-05-12,Bharati Hospital Pune,Pune,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-12,Bharati Hospital Pune,Pune,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-05-13,Inamdar Hospital Pune,Pune,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-05-13,Inamdar Hospital Pune,Pune,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-13,Inamdar Hospital Pune,Pune,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-05-13,Inamdar Hospital Pune,Pune,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-05-13,Inamdar Hospital Pune,Pune,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-05-13,Inamdar Hospital Pune,Pune,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-13,Inamdar Hospital Pune,Pune,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-05-14,Manipal Hospital Baner,Pune,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-05-14,Manipal Hospital Baner,Pune,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-14,Manipal Hospital Baner,Pune,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-05-14,Manipal Hospital Baner,Pune,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-05-14,Manipal Hospital Baner,Pune,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-05-14,Manipal Hospital Baner,Pune,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-14,Manipal Hospital Baner,Pune,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-05-15,Manipal Hospital Kharadi,Pune,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-05-15,Manipal Hospital Kharadi,Pune,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-15,Manipal Hospital Kharadi,Pune,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-05-15,Manipal Hospital Kharadi,Pune,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-05-15,Manipal Hospital Kharadi,Pune,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-05-15,Manipal Hospital Kharadi,Pune,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-15,Manipal Hospital Kharadi,Pune,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-05-16,Poona Hospital and Research Centre,Pune,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-05-16,Poona Hospital and Research Centre,Pune,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-16,Poona Hospital and Research Centre,Pune,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-05-16,Poona Hospital and Research Centre,Pune,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-05-16,Poona Hospital and Research Centre,Pune,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-05-16,Poona Hospital and Research Centre,Pune,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-16,Poona Hospital and Research Centre,Pune,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-05-17,Inlaks and Budhrani Hospital,Pune,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-05-17,Inlaks and Budhrani Hospital,Pune,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-17,Inlaks and Budhrani Hospital,Pune,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-05-17,Inlaks and Budhrani Hospital,Pune,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-05-17,Inlaks and Budhrani Hospital,Pune,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-05-17,Inlaks and Budhrani Hospital,Pune,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-17,Inlaks and Budhrani Hospital,Pune,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-05-18,Oyster and Pearl Hospital,Pune,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-05-18,Oyster and Pearl Hospital,Pune,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-18,Oyster and Pearl Hospital,Pune,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-05-18,Oyster and Pearl Hospital,Pune,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-05-18,Oyster and Pearl Hospital,Pune,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-05-18,Oyster and Pearl Hospital,Pune,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-18,Oyster and Pearl Hospital,Pune,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-05-19,AIMS Multispeciality Hospital,Pune,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-05-19,AIMS Multispeciality Hospital,Pune,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-19,AIMS Multispeciality Hospital,Pune,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-05-19,AIMS Multispeciality Hospital,Pune,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-05-19,AIMS Multispeciality Hospital,Pune,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-05-19,AIMS Multispeciality Hospital,Pune,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-19,AIMS Multispeciality Hospital,Pune,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded
+hosp-05-20,Sahyadri Super Speciality Hospital Hadapsar,Pune,Total Knee Replacement,Orthopedics — Joint Reconstruction,,,,,,not_verified,not_loaded
+hosp-05-20,Sahyadri Super Speciality Hospital Hadapsar,Pune,Laparoscopic Gallbladder Surgery,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-20,Sahyadri Super Speciality Hospital Hadapsar,Pune,Cataract Surgery,Ophthalmology,,,,,,not_verified,not_loaded
+hosp-05-20,Sahyadri Super Speciality Hospital Hadapsar,Pune,Coronary Angiography,Cardiology,,,,,,not_verified,not_loaded
+hosp-05-20,Sahyadri Super Speciality Hospital Hadapsar,Pune,Coronary Angioplasty (PCI),Cardiology,,,,,,not_verified,not_loaded
+hosp-05-20,Sahyadri Super Speciality Hospital Hadapsar,Pune,Hernia Repair,General Surgery,,,,,,not_verified,not_loaded
+hosp-05-20,Sahyadri Super Speciality Hospital Hadapsar,Pune,Kidney Stone Surgery,Urology,,,,,,not_verified,not_loaded

@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Production build output
+dist/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# Logs
+logs/
+*.log
+
+# SQLite local databases & WAL files
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+data/*.db*
+data/*.db-wal*
+data/*.db-shm*
+data/*.db-journal*
+
+# Cache files
+.quota_cache.json
+*quota_cache.json
+data/quota_cache.json
