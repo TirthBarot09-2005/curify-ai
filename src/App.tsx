@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
+import PatientAuthOverlay from './components/PatientAuthOverlay';
 
 // Public pages
 import Landing from './pages/Landing';
@@ -29,7 +30,11 @@ import LenderDisbursements from './pages/lender/Disbursements';
 
 function ProtectedRoute({ children, role }: { children: React.ReactNode; role?: string }) {
   const { isAuthenticated, user, loading } = useAuth();
-  if (loading) {
+
+  // Only show the loading spinner on initial app boot when we have no user yet.
+  // If the user is already authenticated (e.g. Login.tsx set user state before
+  // syncWithBackend finished), skip the spinner to avoid a dark flash.
+  if (loading && !isAuthenticated) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-900 text-teal-400">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-teal-500" />
@@ -43,61 +48,64 @@ function ProtectedRoute({ children, role }: { children: React.ReactNode; role?: 
 
 export default function App() {
   return (
-    <Routes>
-      {/* Public */}
-      <Route path="/" element={<Landing />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Login />} />
+    <>
+      <PatientAuthOverlay />
+      <Routes>
+        {/* Public */}
+        <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Login />} />
 
-      {/* Patient Onboarding (Focused Fullscreen Flow) */}
-      <Route
-        path="/patient/onboarding"
-        element={
-          <ProtectedRoute role="patient">
-            <PatientOnboarding />
-          </ProtectedRoute>
-        }
-      />
+        {/* Patient Onboarding (Focused Fullscreen Flow) */}
+        <Route
+          path="/patient/onboarding"
+          element={
+            <ProtectedRoute role="patient">
+              <PatientOnboarding />
+            </ProtectedRoute>
+          }
+        />
 
-      {/* Patient */}
-      <Route
-        path="/patient"
-        element={
-          <ProtectedRoute role="patient">
-            <PatientLayout />
-          </ProtectedRoute>
-        }
-      >
-        <Route index element={<PatientDashboard />} />
-        <Route path="intake" element={<PatientIntake />} />
-        <Route path="analysis" element={<PatientAnalysis />} />
-        <Route path="hospitals" element={<PatientHospitals />} />
-        <Route path="hospitals/:id" element={<HospitalDetails />} />
-        <Route path="plan" element={<TreatmentPlan />} />
-        <Route path="case" element={<PatientCase />} />
-        <Route path="history" element={<PatientHistory />} />
-        <Route path="profile" element={<PatientProfile />} />
-      </Route>
+        {/* Patient */}
+        <Route
+          path="/patient"
+          element={
+            <ProtectedRoute role="patient">
+              <PatientLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<PatientDashboard />} />
+          <Route path="intake" element={<PatientIntake />} />
+          <Route path="analysis" element={<PatientAnalysis />} />
+          <Route path="hospitals" element={<PatientHospitals />} />
+          <Route path="hospitals/:id" element={<HospitalDetails />} />
+          <Route path="plan" element={<TreatmentPlan />} />
+          <Route path="case" element={<PatientCase />} />
+          <Route path="history" element={<PatientHistory />} />
+          <Route path="profile" element={<PatientProfile />} />
+        </Route>
 
-      {/* Lender */}
-      <Route
-        path="/lender"
-        element={
-          <ProtectedRoute role="lender">
-            <LenderLayout />
-          </ProtectedRoute>
-        }
-      >
-        <Route index element={<LenderDashboard />} />
-        <Route path="cases" element={<LenderCases />} />
-        <Route path="cases/:id" element={<LenderCaseDetails />} />
-        <Route path="companies" element={<LenderCompanies />} />
-        <Route path="analytics" element={<LenderAnalytics />} />
-        <Route path="disbursements" element={<LenderDisbursements />} />
-      </Route>
+        {/* Lender */}
+        <Route
+          path="/lender"
+          element={
+            <ProtectedRoute role="lender">
+              <LenderLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<LenderDashboard />} />
+          <Route path="cases" element={<LenderCases />} />
+          <Route path="cases/:id" element={<LenderCaseDetails />} />
+          <Route path="companies" element={<LenderCompanies />} />
+          <Route path="analytics" element={<LenderAnalytics />} />
+          <Route path="disbursements" element={<LenderDisbursements />} />
+        </Route>
 
-      {/* Fallback */}
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+        {/* Fallback */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </>
   );
 }

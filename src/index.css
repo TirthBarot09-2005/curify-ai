@@ -222,6 +222,13 @@
 .animate-backdrop-in {
   animation: backdropIn 0.2s ease-out forwards;
 }
+@keyframes logoutOverlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-logout-overlay {
+  animation: logoutOverlayIn 0.2s ease-out forwards;
+}
 
 /* Staggered children animations */
 .stagger-children > * {
