@@ -78,6 +78,10 @@ export default function PatientOnboarding() {
       try {
         const data = await api.onboarding.getState();
         if (data) {
+          if (data.onboarding_completed) {
+            navigate('/patient', { replace: true });
+            return;
+          }
           if (data.age) setAge(data.age.toString());
           if (data.gender) setGender(data.gender);
           if (data.city) setCity(data.city);
@@ -221,6 +225,16 @@ export default function PatientOnboarding() {
         if (user && setUser) {
           setUser({ ...user, onboardingCompleted: true });
         }
+        if (user?.id) {
+          try {
+            localStorage.setItem(`curify_onboarding_done_${user.id}`, 'true');
+          } catch {}
+        }
+        if (user?.clerkUserId) {
+          try {
+            localStorage.setItem(`curify_onboarding_done_${user.clerkUserId}`, 'true');
+          } catch {}
+        }
         // Also directly patch localStorage as a safety measure to prevent
         // the dashboard from showing the onboarding banner on initial render
         try {
@@ -249,6 +263,27 @@ export default function PatientOnboarding() {
 
   const skipToDashboard = () => {
     sessionStorage.setItem('curify_skipped_onboarding', 'true');
+    if (user?.id) {
+      try {
+        localStorage.setItem(`curify_onboarding_done_${user.id}`, 'true');
+      } catch {}
+    }
+    if (user?.clerkUserId) {
+      try {
+        localStorage.setItem(`curify_onboarding_done_${user.clerkUserId}`, 'true');
+      } catch {}
+    }
+    try {
+      const stored = localStorage.getItem('curify_user');
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        parsed.onboardingCompleted = true;
+        localStorage.setItem('curify_user', JSON.stringify(parsed));
+      }
+    } catch {}
+    if (user && setUser) {
+      setUser({ ...user, onboardingCompleted: true });
+    }
     navigate('/patient', { replace: true });
   };
 

@@ -274,7 +274,13 @@ export default function Login() {
   // after sign-in, preventing duplicate navigation or route bouncing.
   useEffect(() => {
     if (isAuthenticated && user && !loading && !hasNavigatedRef.current) {
-      if (user.role === 'patient' && user.onboardingCompleted === false) {
+      const isKnownCompleted =
+        user.onboardingCompleted === true ||
+        localStorage.getItem(`curify_onboarding_done_${user.id}`) === 'true' ||
+        (user.clerkUserId && localStorage.getItem(`curify_onboarding_done_${user.clerkUserId}`) === 'true') ||
+        sessionStorage.getItem('curify_skipped_onboarding') === 'true';
+
+      if (user.role === 'patient' && user.onboardingCompleted === false && !isKnownCompleted) {
         navigate('/patient/onboarding', { replace: true });
       } else {
         navigate(`/${user.role || 'patient'}`, { replace: true });
@@ -290,7 +296,13 @@ export default function Login() {
 
     // If already authenticated, redirect immediately
     if (isAuthenticated && user) {
-      if (user.role === 'patient' && user.onboardingCompleted === false) {
+      const isKnownCompleted =
+        user.onboardingCompleted === true ||
+        localStorage.getItem(`curify_onboarding_done_${user.id}`) === 'true' ||
+        (user.clerkUserId && localStorage.getItem(`curify_onboarding_done_${user.clerkUserId}`) === 'true') ||
+        sessionStorage.getItem('curify_skipped_onboarding') === 'true';
+
+      if (user.role === 'patient' && user.onboardingCompleted === false && !isKnownCompleted) {
         navigate('/patient/onboarding', { replace: true });
       } else {
         navigate(`/${user.role || 'patient'}`, { replace: true });
@@ -373,8 +385,14 @@ export default function Login() {
             const syncedUser = await syncWithBackend();
             const stored = localStorage.getItem('curify_user');
             const u = syncedUser || (stored ? JSON.parse(stored) : activeUser);
+            const isKnownCompleted =
+              u?.onboardingCompleted === true ||
+              localStorage.getItem(`curify_onboarding_done_${u?.id}`) === 'true' ||
+              (u?.clerkUserId && localStorage.getItem(`curify_onboarding_done_${u.clerkUserId}`) === 'true') ||
+              sessionStorage.getItem('curify_skipped_onboarding') === 'true';
+
             hasNavigatedRef.current = true;
-            if (u?.role === 'patient' && u?.onboardingCompleted === false) {
+            if (u?.role === 'patient' && u?.onboardingCompleted === false && !isKnownCompleted) {
               navigate('/patient/onboarding', { replace: true });
             } else {
               navigate(`/${u?.role || 'patient'}`, { replace: true });
@@ -629,8 +647,14 @@ export default function Login() {
             const syncedUser = await syncWithBackend();
             const stored = localStorage.getItem('curify_user');
             const u = syncedUser || (stored ? JSON.parse(stored) : activeUser);
+            const isKnownCompleted =
+              u?.onboardingCompleted === true ||
+              localStorage.getItem(`curify_onboarding_done_${u?.id}`) === 'true' ||
+              (u?.clerkUserId && localStorage.getItem(`curify_onboarding_done_${u.clerkUserId}`) === 'true') ||
+              sessionStorage.getItem('curify_skipped_onboarding') === 'true';
+
             hasNavigatedRef.current = true;
-            if (u?.role === 'patient' && u?.onboardingCompleted === false) {
+            if (u?.role === 'patient' && u?.onboardingCompleted === false && !isKnownCompleted) {
               navigate('/patient/onboarding', { replace: true });
             } else {
               navigate(`/${u?.role || 'patient'}`, { replace: true });

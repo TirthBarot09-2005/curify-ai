@@ -120,15 +120,32 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       return null;
     }
 
-    if (isSyncingRef.current) {
-      const stored = localStorage.getItem('curify_user');
-      return stored ? JSON.parse(stored) : null;
-    }
-    isSyncingRef.current = true;
+    // Check if onboarding is known completed from Clerk metadata or persistent local storage
+    const existingStored = localStorage.getItem('curify_user');
+    let parsedExisting: any = null;
+    try {
+      parsedExisting = existingStored ? JSON.parse(existingStored) : null;
+    } catch {}
+
+    const isExplicitlyCompleted =
+      activeClerkUser.publicMetadata?.onboardingCompleted === true ||
+      (activeClerkUser.unsafeMetadata as any)?.onboardingCompleted === true ||
+      localStorage.getItem(`curify_onboarding_done_${activeClerkUser.id}`) === 'true' ||
+      (parsedExisting?.clerkUserId === activeClerkUser.id && parsedExisting?.onboardingCompleted === true);
 
     try {
+      // Small token getter await if session was just activated
+      if (clerk.session) {
+        await clerk.session.getToken().catch(() => null);
+      }
+
       // Backend automatically provisions or matches PostgreSQL user from Clerk JWT
       const me = await api.auth.getMe();
+      const isCompleted =
+        me.profile?.onboarding_completed === true ||
+        isExplicitlyCompleted ||
+        (me.role !== 'patient');
+
       const u: User = {
         id: me.id,
         clerkUserId: activeClerkUser.id,
@@ -138,8 +155,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         email: me.email || activeClerkUser.primaryEmailAddress?.emailAddress || '',
         role: me.role || (activeClerkUser.publicMetadata?.role as UserRole) || 'patient',
         phone: me.phone || activeClerkUser.phoneNumbers?.[0]?.phoneNumber || '',
-        onboardingCompleted: me.profile?.onboarding_completed ?? (me.role === 'patient' ? false : true),
+        onboardingCompleted: isCompleted,
       };
+
+      if (isCompleted) {
+        try {
+          localStorage.setItem(`curify_onboarding_done_${activeClerkUser.id}`, 'true');
+          localStorage.setItem(`curify_onboarding_done_${me.id}`, 'true');
+        } catch {}
+      }
+
       setUser(u);
       localStorage.setItem('curify_user', JSON.stringify(u));
       syncedUserIdRef.current = activeClerkUser.id;
@@ -153,6 +178,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       console.warn('[AuthContext] Backend sync fallback:', err);
       // Fallback to Clerk identity in memory
       const role = (activeClerkUser.publicMetadata?.role as UserRole) || 'patient';
+      const isCompleted = role !== 'patient' || isExplicitlyCompleted;
+
       const u: User = {
         id: activeClerkUser.id,
         clerkUserId: activeClerkUser.id,
@@ -161,8 +188,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         lastName: activeClerkUser.lastName || '',
         email: activeClerkUser.primaryEmailAddress?.emailAddress || '',
         role,
-        onboardingCompleted: role === 'patient' ? false : true,
+        onboardingCompleted: isCompleted,
       };
+
+      if (isCompleted) {
+        try {
+          localStorage.setItem(`curify_onboarding_done_${activeClerkUser.id}`, 'true');
+        } catch {}
+      }
+
       setUser(u);
       localStorage.setItem('curify_user', JSON.stringify(u));
       syncedUserIdRef.current = activeClerkUser.id;

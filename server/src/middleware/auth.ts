@@ -53,6 +53,7 @@ async function resolveCurifyUser(clerkUserId: string, authReq: Request): Promise
     let lastName = '';
     let role: 'patient' | 'lender' = 'patient';
     let phone: string | undefined = undefined;
+    let onboardingCompleted = false;
 
     // Check if Clerk client can retrieve user details
     try {
@@ -62,10 +63,13 @@ async function resolveCurifyUser(clerkUserId: string, authReq: Request): Promise
       lastName = clerkUser.lastName || '';
       phone = clerkUser.phoneNumbers?.[0]?.phoneNumber;
       
-      // Check publicMetadata first, then unsafeMetadata for role
+      // Check publicMetadata first, then unsafeMetadata for role and onboarding status
       const metaRole = (clerkUser.publicMetadata as any)?.role || (clerkUser.unsafeMetadata as any)?.role;
       if (metaRole === 'lender') {
         role = 'lender';
+      }
+      if ((clerkUser.publicMetadata as any)?.onboardingCompleted || (clerkUser.unsafeMetadata as any)?.onboardingCompleted) {
+        onboardingCompleted = true;
       }
 
       // If role was in unsafeMetadata but not publicMetadata, sync it to publicMetadata
@@ -128,8 +132,8 @@ async function resolveCurifyUser(clerkUserId: string, authReq: Request): Promise
     if (role === 'patient') {
       await query(
         `INSERT INTO patient_profiles (id, user_id, city, state, onboarding_completed, onboarding_step, profile_completion_percentage)
-         VALUES ($1, $2, 'Ahmedabad', 'Gujarat', FALSE, 1, 20);`,
-        [randomUUID(), newUserId]
+         VALUES ($1, $2, 'Ahmedabad', 'Gujarat', $3, 1, 20);`,
+        [randomUUID(), newUserId, onboardingCompleted]
       );
     } else {
       await query(
