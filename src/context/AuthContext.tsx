@@ -44,6 +44,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const [user, setUser] = useState<User | null>(() => {
     try {
+      const demo = sessionStorage.getItem('curify_demo_user');
+      if (demo) {
+        const u = JSON.parse(demo);
+        if (u?.role === 'lender') return u;
+      }
       const stored = localStorage.getItem('curify_user');
       return stored ? JSON.parse(stored) : null;
     } catch {
@@ -101,7 +106,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         if (demoStored) {
           const u = JSON.parse(demoStored as string);
           if (u?.role === 'lender') {
-            setUser(u);
+            setUser((prev) => (prev?.id === u.id && prev?.role === 'lender' ? prev : u));
             setLoading(false);
             return u;
           }
@@ -109,7 +114,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       } catch {
         // Continue to reset
       }
-      setUser(null);
+      setUser((prev) => (prev ? null : prev));
       localStorage.removeItem('curify_user');
       setLoading(false);
       return null;
@@ -117,7 +122,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     if (isSyncingRef.current) {
       const stored = localStorage.getItem('curify_user');
-      return stored ? JSON.parse(stored) : user;
+      return stored ? JSON.parse(stored) : null;
     }
     isSyncingRef.current = true;
 
@@ -166,7 +171,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setLoading(false);
       isSyncingRef.current = false;
     }
-  }, [isSignedIn, clerkUser, clerk, fetchProfile, user]);
+  }, [isSignedIn, clerkUser?.id, clerk, fetchProfile]);
 
   useEffect(() => {
     if (clerkLoaded) {
@@ -182,7 +187,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           if (demoStored) {
             const u = JSON.parse(demoStored as string);
             if (u?.role === 'lender') {
-              setUser(u);
+              setUser((prev) => (prev?.id === u.id && prev?.role === 'lender' ? prev : u));
               setLoading(false);
               return;
             }
@@ -203,12 +208,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           }
         } catch {}
 
-        setUser(null);
+        setUser((prev) => (prev ? null : prev));
         setLoading(false);
         syncedUserIdRef.current = null;
       }
     }
-  }, [clerkLoaded, isSignedIn, clerkUser?.id, syncWithBackend]);
+  }, [clerkLoaded, isSignedIn, clerkUser?.id]);
 
   const refreshUser = useCallback(async (): Promise<User | null> => {
     return await syncWithBackend();

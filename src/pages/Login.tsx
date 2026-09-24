@@ -918,9 +918,11 @@ export default function Login() {
     setLoading(true);
     setError('');
     try {
+      hasNavigatedRef.current = true;
       await login('lender');
       navigate('/lender', { replace: true });
     } catch (err: any) {
+      hasNavigatedRef.current = false;
       setError(err?.message || 'Demo login failed. Is the backend server running?');
     } finally {
       setLoading(false);
