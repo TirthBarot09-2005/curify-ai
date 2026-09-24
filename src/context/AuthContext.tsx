@@ -44,6 +44,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const [user, setUser] = useState<User | null>(() => {
     try {
+      const demo = sessionStorage.getItem('curify_demo_user');
+      if (demo) {
+        const u = JSON.parse(demo);
+        if (u?.role === 'lender') return u;
+      }
       const stored = localStorage.getItem('curify_user');
       return stored ? JSON.parse(stored) : null;
     } catch {
@@ -101,7 +106,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         if (demoStored) {
           const u = JSON.parse(demoStored as string);
           if (u?.role === 'lender') {
-            setUser(u);
+            setUser((prev) => (prev?.id === u.id && prev?.role === 'lender' ? prev : u));
             setLoading(false);
             return u;
           }
@@ -109,7 +114,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       } catch {
         // Continue to reset
       }
-      setUser(null);
+      setUser((prev) => (prev ? null : prev));
       localStorage.removeItem('curify_user');
       setLoading(false);
       return null;
@@ -117,7 +122,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     if (isSyncingRef.current) {
       const stored = localStorage.getItem('curify_user');
-      return stored ? JSON.parse(stored) : user;
+      return stored ? JSON.parse(stored) : null;
     }
     isSyncingRef.current = true;
 
@@ -166,7 +171,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setLoading(false);
       isSyncingRef.current = false;
     }
-  }, [isSignedIn, clerkUser, clerk, fetchProfile, user]);
+  }, [isSignedIn, clerkUser?.id, clerk, fetchProfile]);
 
   useEffect(() => {
     if (clerkLoaded) {
@@ -182,7 +187,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           if (demoStored) {
             const u = JSON.parse(demoStored as string);
             if (u?.role === 'lender') {
-              setUser(u);
+              setUser((prev) => (prev?.id === u.id && prev?.role === 'lender' ? prev : u));
               setLoading(false);
               return;
             }
@@ -203,12 +208,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           }
         } catch {}
 
-        setUser(null);
+        setUser((prev) => (prev ? null : prev));
         setLoading(false);
         syncedUserIdRef.current = null;
       }
     }
-  }, [clerkLoaded, isSignedIn, clerkUser?.id, syncWithBackend]);
+  }, [clerkLoaded, isSignedIn, clerkUser?.id]);
 
   const refreshUser = useCallback(async (): Promise<User | null> => {
     return await syncWithBackend();
@@ -219,36 +224,40 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       // Demo persona is strictly limited to lender underwriter review
       if (roleOrEmail === 'lender' || roleOrEmail === 'lender@curify.ai' || roleOrEmail === 'neha@curify.ai') {
         const seedEmail = typeof roleOrEmail === 'string' && roleOrEmail.includes('@') ? roleOrEmail : 'lender@curify.ai';
-        try {
-          const res = await api.auth.login({ email: seedEmail, password: password || 'Curify@2026' });
-          if (res.token) {
-            setToken(res.token);
-          }
-          const u: User = {
-            id: res.user?.id || 'lender-seed-id',
-            name: res.user?.name || `${res.user?.firstName || ''} ${res.user?.lastName || ''}`.trim() || 'Neha Sharma',
-            email: res.user?.email || seedEmail,
-            role: 'lender',
-            onboardingCompleted: true,
-          };
-          setUser(u);
-          sessionStorage.setItem('curify_demo_user', JSON.stringify(u));
-          localStorage.setItem('curify_user', JSON.stringify(u));
-          return;
-        } catch (apiErr) {
-          console.warn('[AuthContext] Backend auth unavailable for demo underwriter, using robust fallback session:', apiErr);
-          const fallbackUser: User = {
-            id: 'lender-demo-user-id',
-            name: 'Neha Sharma',
-            email: seedEmail,
-            role: 'lender',
-            onboardingCompleted: true,
-          };
-          setUser(fallbackUser);
-          sessionStorage.setItem('curify_demo_user', JSON.stringify(fallbackUser));
-          localStorage.setItem('curify_user', JSON.stringify(fallbackUser));
-          return;
-        }
+        const demoUser: User = {
+          id: 'lender-demo-user-id',
+          name: 'Neha Sharma',
+          email: seedEmail,
+          role: 'lender',
+          onboardingCompleted: true,
+        };
+        // Activate preview state synchronously (0ms latency, immune to cold-starts or network drops)
+        setUser(demoUser);
+        sessionStorage.setItem('curify_demo_user', JSON.stringify(demoUser));
+        localStorage.setItem('curify_user', JSON.stringify(demoUser));
+        setLoading(false);
+
+        // Non-blocking background sync for backend JWT token
+        api.auth.login({ email: seedEmail, password: password || 'Curify@2026' })
+          .then((res) => {
+            if (res?.token) setToken(res.token);
+            if (res?.user) {
+              const updated: User = {
+                id: res.user.id || demoUser.id,
+                name: res.user.name || demoUser.name,
+                email: res.user.email || seedEmail,
+                role: 'lender',
+                onboardingCompleted: true,
+              };
+              setUser(updated);
+              sessionStorage.setItem('curify_demo_user', JSON.stringify(updated));
+              localStorage.setItem('curify_user', JSON.stringify(updated));
+            }
+          })
+          .catch((err) => {
+            console.warn('[AuthContext] Backend demo token background sync notice:', err);
+          });
+        return;
       }
 
       // Standard login delegates to Clerk or sync
