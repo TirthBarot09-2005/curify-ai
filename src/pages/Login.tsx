@@ -318,6 +318,11 @@ export default function Login() {
 
     try {
       if (isSignInLoaded && signIn) {
+        setPatientAuthTransition({
+          type: 'login',
+          primaryText: 'Signing you in securely',
+          secondaryText: 'Preparing your Curify workspace',
+        });
         try {
           const result = await signIn.create({
             identifier: loginEmail.trim(),
@@ -364,6 +369,7 @@ export default function Login() {
             }, 300);
             return;
           } else if (result.status === 'needs_second_factor') {
+            setPatientAuthTransition(null);
             setMode('verify-email');
             return;
           }
@@ -413,6 +419,7 @@ export default function Login() {
           throw clerkErr;
         }
       } else {
+        setPatientAuthTransition(null);
         setError('Authentication service is initializing. Please try again in a moment.');
       }
     } catch (err: any) {
