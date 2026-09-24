@@ -9,32 +9,32 @@ import type { PatientAuthTransitionState } from '../context/AuthContext';
  * - Subtle warm/neutral ambient gradient background
  * - Centered Curify mark with animated pulsing aura and rotating ring
  * - Calm, trustworthy typography and messaging
- * - Smooth enter and fade-out transition without exposing previous UI
+ * - Synchronous immediate mount with smooth fade-out exit
  */
 export default function PatientAuthOverlay() {
   const { patientAuthTransition } = useAuth();
-  const [visible, setVisible] = useState(false);
   const [fadingOut, setFadingOut] = useState(false);
-  const [activeState, setActiveState] = useState<PatientAuthTransitionState | null>(null);
+  const [cachedState, setCachedState] = useState<PatientAuthTransitionState | null>(null);
 
+  // When patientAuthTransition transitions from truthy to null,
+  // use cachedState to smoothly fade out the overlay over 260ms before unmounting.
   useEffect(() => {
     if (patientAuthTransition) {
-      setActiveState(patientAuthTransition);
-      setVisible(true);
+      setCachedState(patientAuthTransition);
       setFadingOut(false);
-    } else if (visible && !fadingOut) {
-      // Begin smooth fade-out exit
+    } else if (cachedState && !fadingOut) {
       setFadingOut(true);
       const timer = setTimeout(() => {
-        setVisible(false);
+        setCachedState(null);
         setFadingOut(false);
-        setActiveState(null);
       }, 260); // Matches CSS transition duration
       return () => clearTimeout(timer);
     }
-  }, [patientAuthTransition, visible, fadingOut]);
+  }, [patientAuthTransition, cachedState, fadingOut]);
 
-  if (!visible || !activeState) return null;
+  // Synchronously derive active state so it mounts on the exact frame patientAuthTransition is set
+  const activeState = patientAuthTransition || cachedState;
+  if (!activeState) return null;
 
   const isLogout = activeState.type === 'logout';
   const primaryText =
