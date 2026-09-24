@@ -15,6 +15,7 @@ import {
   Loader2,
   Building2,
   Sparkles,
+  LogOut,
 } from 'lucide-react';
 import { formatINR } from '../../utils';
 
@@ -50,7 +51,7 @@ const CITY_TO_STATE: Record<string, string> = {
 
 export default function PatientOnboarding() {
   const navigate = useNavigate();
-  const { user, setUser, refreshUser } = useAuth();
+  const { user, setUser, refreshUser, logout, loggingOut } = useAuth();
   const { setIntake } = useApp();
 
   const [step, setStep] = useState(1);
@@ -261,12 +262,23 @@ export default function PatientOnboarding() {
             Curify <span className="text-teal-600">AI</span>
           </span>
         </div>
-        <button
-          onClick={skipToDashboard}
-          className="text-xs font-semibold text-slate-500 hover:text-slate-800 transition-colors cursor-pointer"
-        >
-          Skip to Dashboard →
-        </button>
+        <div className="flex items-center gap-4">
+          <button
+            onClick={skipToDashboard}
+            className="text-xs font-semibold text-slate-500 hover:text-slate-800 transition-colors cursor-pointer"
+          >
+            Skip to Dashboard →
+          </button>
+          <button
+            onClick={() => logout({ isPatient: true })}
+            disabled={loggingOut}
+            className="text-xs font-semibold text-rose-600 hover:text-rose-700 transition-colors cursor-pointer flex items-center gap-1.5"
+            title="Sign out securely"
+          >
+            <LogOut className={`w-3.5 h-3.5 ${loggingOut ? 'animate-spin' : ''}`} />
+            <span>{loggingOut ? 'Signing out…' : 'Sign Out'}</span>
+          </button>
+        </div>
       </header>
 
       {/* Main Container */}

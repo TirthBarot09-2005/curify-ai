@@ -29,7 +29,7 @@ const sidebarItems = [
 ];
 
 export default function LenderLayout() {
-  const { user, logout } = useAuth();
+  const { user, logout, loggingOut } = useAuth();
   const { cases } = useApp();
   const navigate = useNavigate();
   const location = useLocation();
@@ -187,11 +187,16 @@ export default function LenderLayout() {
                     </span>
                   </div>
                   <button
-                    onClick={() => { logout(); navigate('/'); }}
-                    className="w-full flex items-center gap-2.5 px-4 py-2 text-xs font-medium text-rose-600 hover:bg-rose-50/60 transition-colors text-left"
+                    onClick={() => { logout(); setMenuOpen(false); }}
+                    disabled={loggingOut}
+                    className={`w-full flex items-center gap-2.5 px-4 py-2 text-xs font-medium transition-colors text-left ${
+                      loggingOut
+                        ? 'text-slate-400 cursor-not-allowed'
+                        : 'text-rose-600 hover:bg-rose-50/60'
+                    }`}
                   >
-                    <LogOut className="w-4 h-4" />
-                    Sign Out
+                    <LogOut className={`w-4 h-4 ${loggingOut ? 'animate-spin' : ''}`} />
+                    {loggingOut ? 'Signing out\u2026' : 'Sign Out'}
                   </button>
                 </div>
               )}

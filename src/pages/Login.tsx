@@ -191,7 +191,7 @@ function PasswordStrengthMeter({ evalResult }: { evalResult: ReturnType<typeof e
 export default function Login() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { login, isAuthenticated, user, setUser, logout, refreshUser } = useAuth();
+  const { login, isAuthenticated, user, setUser, logout, refreshUser, setPatientAuthTransition } = useAuth();
   const { isLoaded: isSignInLoaded, signIn, setActive: setSignInActive } = useSignIn();
   const { isLoaded: isSignUpLoaded, signUp, setActive: setSignUpActive } = useSignUp();
 
@@ -223,6 +223,7 @@ export default function Login() {
   const [mounted, setMounted] = useState(false);
   const [showDemo, setShowDemo] = useState(false);
   const emailRef = useRef<HTMLInputElement>(null);
+  const hasNavigatedRef = useRef(false);
 
   const switchToLogin = () => {
     setLoginEmail('');
@@ -262,16 +263,18 @@ export default function Login() {
     }
   }, [location.search, location.pathname]);
 
-  // Automatically redirect authenticated users to their dashboard / onboarding
+  // Automatically redirect authenticated users to their dashboard / onboarding.
+  // Skip when `loading` is true or when the submit handler has already triggered navigation
+  // after sign-in, preventing duplicate navigation or route bouncing.
   useEffect(() => {
-    if (isAuthenticated && user) {
+    if (isAuthenticated && user && !loading && !hasNavigatedRef.current) {
       if (user.role === 'patient' && user.onboardingCompleted === false) {
         navigate('/patient/onboarding', { replace: true });
       } else {
         navigate(`/${user.role || 'patient'}`, { replace: true });
       }
     }
-  }, [isAuthenticated, user, navigate]);
+  }, [isAuthenticated, user, navigate, loading]);
 
   const clearError = () => setError('');
 
@@ -322,6 +325,11 @@ export default function Login() {
           });
 
           if (result.status === 'complete') {
+            setPatientAuthTransition({
+              type: 'login',
+              primaryText: 'Signing you in securely',
+              secondaryText: 'Preparing your Curify workspace',
+            });
             if (setSignInActive) {
               await setSignInActive({ session: result.createdSessionId });
             }
@@ -345,17 +353,22 @@ export default function Login() {
             refreshUser().catch(() => {});
             const stored = localStorage.getItem('curify_user');
             const u = stored ? JSON.parse(stored) : null;
+            hasNavigatedRef.current = true;
             if (u?.role === 'patient' && u?.onboardingCompleted === false) {
               navigate('/patient/onboarding', { replace: true });
             } else {
               navigate(`/${u?.role || 'patient'}`, { replace: true });
             }
+            setTimeout(() => {
+              setPatientAuthTransition(null);
+            }, 300);
             return;
           } else if (result.status === 'needs_second_factor') {
             setMode('verify-email');
             return;
           }
         } catch (clerkErr: any) {
+          setPatientAuthTransition(null);
           const errCode = clerkErr?.errors?.[0]?.code;
           const errMsg =
             clerkErr?.errors?.[0]?.longMessage ||
@@ -403,6 +416,7 @@ export default function Login() {
         setError('Authentication service is initializing. Please try again in a moment.');
       }
     } catch (err: any) {
+      setPatientAuthTransition(null);
       const msg =
         err?.errors?.[0]?.longMessage ||
         err?.errors?.[0]?.message ||
@@ -621,7 +635,16 @@ export default function Login() {
 
         // Step 5: Direct navigation to onboarding for patient (or lender dashboard)
         if (role === 'patient') {
+          setPatientAuthTransition({
+            type: 'login',
+            primaryText: 'Signing you in securely',
+            secondaryText: 'Preparing your Curify workspace',
+          });
+          hasNavigatedRef.current = true;
           navigate('/patient/onboarding', { replace: true });
+          setTimeout(() => {
+            setPatientAuthTransition(null);
+          }, 300);
         } else {
           navigate('/lender', { replace: true });
         }
@@ -725,14 +748,24 @@ export default function Login() {
         });
 
         if (result.status === 'complete') {
+          setPatientAuthTransition({
+            type: 'login',
+            primaryText: 'Signing you in securely',
+            secondaryText: 'Preparing your Curify workspace',
+          });
           if (setSignInActive) {
             await setSignInActive({ session: result.createdSessionId });
           }
           await refreshUser();
+          hasNavigatedRef.current = true;
           navigate('/patient', { replace: true });
+          setTimeout(() => {
+            setPatientAuthTransition(null);
+          }, 300);
         }
       }
     } catch (err: any) {
+      setPatientAuthTransition(null);
       setError(
         err?.errors?.[0]?.longMessage ||
         err?.errors?.[0]?.message ||

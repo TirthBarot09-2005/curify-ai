@@ -1,7 +1,14 @@
 import { createContext, useContext, useState, useEffect, useCallback, useRef, type ReactNode } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useUser, useAuth as useClerkAuth, useClerk } from '@clerk/clerk-react';
 import type { User, UserRole } from '../types';
 import { api, setTokenGetter, setToken, removeToken } from '../lib/api';
+
+export interface PatientAuthTransitionState {
+  type: 'login' | 'logout';
+  primaryText?: string;
+  secondaryText?: string;
+}
 
 interface AuthContextType {
   user: User | null;
@@ -9,6 +16,9 @@ interface AuthContextType {
   setUser: React.Dispatch<React.SetStateAction<User | null>>;
   isAuthenticated: boolean;
   loading: boolean;
+  loggingOut: boolean;
+  patientAuthTransition: PatientAuthTransitionState | null;
+  setPatientAuthTransition: React.Dispatch<React.SetStateAction<PatientAuthTransitionState | null>>;
   login: (roleOrEmail: UserRole | string, password?: string) => Promise<void>;
   register: (data: {
     email: string;
@@ -18,7 +28,7 @@ interface AuthContextType {
     lastName: string;
     phone?: string;
   }) => Promise<void>;
-  logout: () => void;
+  logout: (options?: { isPatient?: boolean }) => Promise<void>;
   refreshUser: () => Promise<void>;
   fetchProfile: () => Promise<void>;
 }
@@ -27,6 +37,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const clerk = useClerk();
+  const navigate = useNavigate();
   const { isSignedIn, isLoaded: clerkLoaded, getToken } = useClerkAuth();
   const { user: clerkUser } = useUser();
 
@@ -43,6 +54,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const stored = localStorage.getItem('curify_user');
     return !stored;
   });
+  const [loggingOut, setLoggingOut] = useState(false);
+  const [patientAuthTransition, setPatientAuthTransition] = useState<PatientAuthTransitionState | null>(null);
 
   const isSyncingRef = useRef(false);
   const syncedUserIdRef = useRef<string | null>(null);
@@ -247,20 +260,51 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     [syncWithBackend]
   );
 
-  const logout = useCallback(async () => {
-    try {
-      await clerk.signOut();
-    } catch {
-      // Ignore if already signed out
-    }
-    removeToken();
-    sessionStorage.removeItem('curify_demo_user');
-    localStorage.removeItem('curify_user');
-    localStorage.removeItem('curify_cases_v2');
-    sessionStorage.removeItem('curify_skipped_onboarding');
-    setUser(null);
-    setProfile(null);
-  }, [clerk]);
+  const logout = useCallback(
+    async (options?: { isPatient?: boolean }) => {
+      if (loggingOut) return; // Prevent duplicate logout clicks
+      setLoggingOut(true);
+
+      const isPatient = options?.isPatient ?? (user?.role === 'patient');
+
+      if (isPatient) {
+        setPatientAuthTransition({
+          type: 'logout',
+          primaryText: 'Signing you out securely',
+          secondaryText: 'Your session is being safely closed',
+        });
+      }
+
+      // Clear app state and storage immediately
+      removeToken();
+      sessionStorage.removeItem('curify_demo_user');
+      localStorage.removeItem('curify_user');
+      localStorage.removeItem('curify_cases_v2');
+      sessionStorage.removeItem('curify_skipped_onboarding');
+      setUser(null);
+      setProfile(null);
+
+      try {
+        await clerk.signOut();
+      } catch (err) {
+        console.warn('[AuthContext] Clerk signOut note:', err);
+      }
+
+      if (isPatient) {
+        // Navigate cleanly to /login underneath the transition overlay
+        navigate('/login', { replace: true });
+        // Minimal visual polish duration (~280ms) for /login DOM paint before fade-out
+        setTimeout(() => {
+          setPatientAuthTransition(null);
+          setLoggingOut(false);
+        }, 280);
+      } else {
+        navigate('/login', { replace: true });
+        setLoggingOut(false);
+      }
+    },
+    [clerk, loggingOut, user?.role, navigate]
+  );
 
   return (
     <AuthContext.Provider
@@ -270,6 +314,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setUser,
         isAuthenticated: !!user,
         loading,
+        loggingOut,
+        patientAuthTransition,
+        setPatientAuthTransition,
         login,
         register,
         logout,

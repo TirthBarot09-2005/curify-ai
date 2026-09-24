@@ -3,7 +3,7 @@ import { useUser, useClerk } from '@clerk/clerk-react';
 import { FileKey, Shield, Mail, Phone, LogOut } from 'lucide-react';
 
 export default function Security() {
-  const { user } = useAuth();
+  const { user, logout, loggingOut } = useAuth();
   const { user: clerkUser } = useUser();
   const { signOut, openUserProfile } = useClerk();
 
@@ -67,10 +67,12 @@ export default function Security() {
       <div className="pt-8 border-t border-slate-100 mt-8">
         <h3 className="text-sm font-bold text-red-600 uppercase tracking-wider mb-4">Danger Zone</h3>
         <button 
-          onClick={() => signOut()}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-red-200 text-red-600 hover:bg-red-50 text-sm font-semibold transition-colors"
+          onClick={() => logout({ isPatient: true })}
+          disabled={loggingOut}
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-red-200 text-red-600 hover:bg-red-50 text-sm font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          <LogOut className="w-4 h-4" /> Sign out of all sessions
+          <LogOut className={`w-4 h-4 ${loggingOut ? 'animate-spin' : ''}`} />
+          {loggingOut ? 'Signing out of all sessions…' : 'Sign out of all sessions'}
         </button>
       </div>
     </div>
