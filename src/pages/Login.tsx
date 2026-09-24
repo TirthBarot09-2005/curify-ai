@@ -219,6 +219,9 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [resendTimer, setResendTimer] = useState(0);
+  const [isSecondFactorSignIn, setIsSecondFactorSignIn] = useState(false);
+  const [secondFactorEmailAddressId, setSecondFactorEmailAddressId] = useState<string | null>(null);
+  const [secondFactorEmailDisplay, setSecondFactorEmailDisplay] = useState<string>('');
   const [demoRole] = useState<'lender'>('lender');
   const [mounted, setMounted] = useState(false);
   const [showDemo, setShowDemo] = useState(false);
@@ -228,6 +231,9 @@ export default function Login() {
   const switchToLogin = () => {
     setLoginEmail('');
     setLoginPassword('');
+    setIsSecondFactorSignIn(false);
+    setSecondFactorEmailAddressId(null);
+    setSecondFactorEmailDisplay('');
     setError('');
     setMode('login');
   };
@@ -331,6 +337,13 @@ export default function Login() {
             password: loginPassword,
           });
 
+          // Temporary development logging (without sensitive data)
+          console.log('[Clerk Auth] signIn.status:', result.status);
+          console.log(
+            '[Clerk Auth] supportedSecondFactors:',
+            result.supportedSecondFactors?.map((f: any) => ({ strategy: f.strategy }))
+          );
+
           if (result.status === 'complete') {
             setPatientAuthTransition({
               type: 'login',
@@ -368,9 +381,43 @@ export default function Login() {
             }
             setPatientAuthTransition(null);
             return;
-          } else if (result.status === 'needs_second_factor') {
+          } else if (result.status === 'needs_second_factor' || (result.status as string) === 'needs_client_trust') {
+            const factors = result.supportedSecondFactors || [];
+            const emailFactor = factors.find((f: any) => f.strategy === 'email_code');
+
+            console.log('[Clerk Auth] selected factor strategy:', emailFactor ? emailFactor.strategy : 'none');
+
+            if (!emailFactor) {
+              console.warn('[Clerk Auth] No email_code second factor found among:', factors.map((f: any) => f.strategy));
+              setPatientAuthTransition(null);
+              setError("We couldn't send the verification code. Please try again.");
+              return;
+            }
+
+            try {
+              const prepRes = await signIn.prepareSecondFactor({
+                strategy: 'email_code',
+                emailAddressId: (emailFactor as any).emailAddressId,
+              });
+              console.log('[Clerk Auth] prepareSecondFactor result status:', prepRes?.status);
+
+              setIsSecondFactorSignIn(true);
+              setSecondFactorEmailAddressId((emailFactor as any).emailAddressId || null);
+              setSecondFactorEmailDisplay((emailFactor as any).safeIdentifier || loginEmail.trim());
+              setResendTimer(60);
+              setPatientAuthTransition(null);
+              setMode('verify-email');
+              return;
+            } catch (prepErr) {
+              console.error('[Clerk Auth] Failed to prepare/send second factor email code:', prepErr);
+              setPatientAuthTransition(null);
+              setError("We couldn't send the verification code. Please try again.");
+              return;
+            }
+          } else {
+            console.warn('[Clerk Auth] Unexpected sign-in status:', result.status);
             setPatientAuthTransition(null);
-            setMode('verify-email');
+            setError('Authentication could not be completed. Please try again.');
             return;
           }
         } catch (clerkErr: any) {
@@ -536,6 +583,83 @@ export default function Login() {
     setError('');
 
     try {
+      // Branch 1: Second Factor / Device Trust verification during sign in
+      if (isSecondFactorSignIn) {
+        if (!isSignInLoaded || !signIn) {
+          setError('Authentication service is initializing. Please try again.');
+          return;
+        }
+
+        try {
+          const attemptRes = await signIn.attemptSecondFactor({
+            strategy: 'email_code',
+            code: cleanCode,
+          });
+
+          console.log('[Clerk Auth] attemptSecondFactor status:', attemptRes.status);
+
+          if (attemptRes.status === 'complete') {
+            setPatientAuthTransition({
+              type: 'login',
+              primaryText: 'Signing you in securely',
+              secondaryText: 'Preparing your Curify workspace',
+            });
+
+            if (setSignInActive) {
+              await setSignInActive({ session: attemptRes.createdSessionId });
+            }
+
+            const existingStored = localStorage.getItem('curify_user');
+            let parsedExisting: User | null = null;
+            try {
+              parsedExisting = existingStored ? JSON.parse(existingStored) : null;
+            } catch {}
+
+            const activeUser: User = {
+              id: (attemptRes as any).createdUserId || parsedExisting?.id || `usr_${Date.now()}`,
+              clerkUserId: (attemptRes as any).createdUserId || parsedExisting?.clerkUserId || undefined,
+              name: parsedExisting?.name || 'Patient',
+              email: loginEmail.trim() || secondFactorEmailDisplay,
+              role: (parsedExisting?.role as UserRole) || 'patient',
+              onboardingCompleted: parsedExisting?.onboardingCompleted ?? true,
+            };
+            localStorage.setItem('curify_user', JSON.stringify(activeUser));
+            setUser(activeUser);
+
+            const syncedUser = await syncWithBackend();
+            const stored = localStorage.getItem('curify_user');
+            const u = syncedUser || (stored ? JSON.parse(stored) : activeUser);
+            hasNavigatedRef.current = true;
+            if (u?.role === 'patient' && u?.onboardingCompleted === false) {
+              navigate('/patient/onboarding', { replace: true });
+            } else {
+              navigate(`/${u?.role || 'patient'}`, { replace: true });
+            }
+            setPatientAuthTransition(null);
+            return;
+          } else {
+            console.warn('[Clerk Auth] attemptSecondFactor non-complete status:', attemptRes.status);
+            setError('Verification incomplete. Please check the code and try again.');
+            return;
+          }
+        } catch (attemptErr: any) {
+          setPatientAuthTransition(null);
+          console.error('[Clerk Auth] attemptSecondFactor error:', attemptErr);
+          const errCode = attemptErr?.errors?.[0]?.code;
+          const errMsg = attemptErr?.errors?.[0]?.longMessage || attemptErr?.errors?.[0]?.message || attemptErr?.message || '';
+
+          if (errCode === 'form_code_incorrect') {
+            setError('Incorrect 6-digit code. Please check your inbox or request a new code.');
+          } else if (errCode === 'verification_expired') {
+            setError('Verification code has expired. Please click "Resend verification code" below.');
+          } else {
+            setError(errMsg || 'Failed to verify code. Please try again.');
+          }
+          return;
+        }
+      }
+
+      // Branch 2: Initial registration email verification during sign up
       if (isSignUpLoaded && signUp) {
         let verifiedSessionId: string | null = null;
         let verifiedUserId: string | null = null;
@@ -678,12 +802,21 @@ export default function Login() {
       setLoading(true);
       setError('');
       setOtpCode('');
-      if (signUp) {
+      if (isSecondFactorSignIn && signIn) {
+        console.log('[Clerk Auth] Resending second factor code for strategy email_code');
+        const resendRes = await signIn.prepareSecondFactor({
+          strategy: 'email_code',
+          ...(secondFactorEmailAddressId ? { emailAddressId: secondFactorEmailAddressId } : {}),
+        });
+        console.log('[Clerk Auth] Resend prepareSecondFactor result status:', resendRes.status);
+        setResendTimer(60);
+      } else if (signUp) {
         await signUp.prepareEmailAddressVerification({ strategy: 'email_code' });
         setResendTimer(60);
       }
     } catch (err: any) {
-      setError(err?.errors?.[0]?.message || err?.message || 'Failed to resend code.');
+      console.error('[Clerk Auth] Failed to resend verification code:', err);
+      setError(err?.errors?.[0]?.message || err?.message || "We couldn't send the verification code. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -895,9 +1028,15 @@ export default function Login() {
                     <div className="w-12 h-12 mx-auto mb-3 rounded-2xl bg-teal-50 border border-teal-200 flex items-center justify-center text-teal-600">
                       <Mail className="w-6 h-6" />
                     </div>
-                    <h1 className="login-card-title">Verify your email</h1>
+                    <h1 className="login-card-title">
+                      {isSecondFactorSignIn ? 'Two-step verification' : 'Verify your email'}
+                    </h1>
                     <p className="login-card-subtitle">
-                      We've sent a 6-digit code to <strong>{signupEmail}</strong>. Enter it below to complete registration.
+                      {isSecondFactorSignIn ? (
+                        <>We've sent a 6-digit verification code to <strong>{secondFactorEmailDisplay || loginEmail.trim()}</strong>. Enter it below to complete sign in.</>
+                      ) : (
+                        <>We've sent a 6-digit code to <strong>{signupEmail}</strong>. Enter it below to complete registration.</>
+                      )}
                     </p>
                   </div>
 
@@ -960,12 +1099,16 @@ export default function Login() {
                     <button
                       type="button"
                       onClick={() => {
-                        setMode('signup');
-                        setError('');
+                        if (isSecondFactorSignIn) {
+                          switchToLogin();
+                        } else {
+                          setMode('signup');
+                          setError('');
+                        }
                       }}
                       className="text-slate-500 hover:text-slate-800 cursor-pointer"
                     >
-                      Change email
+                      {isSecondFactorSignIn ? 'Back to Sign In' : 'Change email'}
                     </button>
                   </div>
                 </form>
@@ -1124,6 +1267,9 @@ export default function Login() {
                       role="tab"
                       aria-selected={mode === 'signup'}
                       onClick={() => {
+                        setIsSecondFactorSignIn(false);
+                        setSecondFactorEmailAddressId(null);
+                        setSecondFactorEmailDisplay('');
                         setMode('signup');
                         setError('');
                       }}
