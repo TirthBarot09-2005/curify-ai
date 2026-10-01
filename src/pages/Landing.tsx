@@ -22,6 +22,9 @@ import {
   ChevronRight,
   Menu,
   X,
+  Lock,
+  Scale,
+  AlertCircle,
 } from 'lucide-react';
 
 /* ──────────────────────────────────────────────────────────
@@ -44,7 +47,7 @@ function useInView(threshold = 0.15) {
 }
 
 /* ──────────────────────────────────────────────────────────
-   Animated counter for numbers
+   Animated counter for numbers with frame cleanup (INP friendly)
    ────────────────────────────────────────────────────────── */
 function AnimatedNumber({ value, suffix = '', prefix = '' }: { value: number; suffix?: string; prefix?: string }) {
   const [display, setDisplay] = useState(0);
@@ -53,13 +56,19 @@ function AnimatedNumber({ value, suffix = '', prefix = '' }: { value: number; su
     if (!visible) return;
     const duration = 1200;
     const start = performance.now();
+    let frameId: number;
     const step = (now: number) => {
       const progress = Math.min((now - start) / duration, 1);
       const ease = 1 - Math.pow(1 - progress, 3);
       setDisplay(Math.round(ease * value));
-      if (progress < 1) requestAnimationFrame(step);
+      if (progress < 1) {
+        frameId = requestAnimationFrame(step);
+      }
     };
-    requestAnimationFrame(step);
+    frameId = requestAnimationFrame(step);
+    return () => {
+      if (frameId) cancelAnimationFrame(frameId);
+    };
   }, [visible, value]);
   return <span ref={ref}>{prefix}{display.toLocaleString('en-IN')}{suffix}</span>;
 }
@@ -143,23 +152,32 @@ export default function Landing() {
   useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      const sections = ['how-it-works', 'for-patients', 'for-lenders', 'why-curify'];
-      const scrollPosition = window.scrollY + 220;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const sections = ['how-it-works', 'why-curify', 'for-patients', 'for-lenders', 'responsible-ai'];
+          const scrollPosition = window.scrollY + 220;
+          let current = '';
 
-      for (const sectionId of sections) {
-        const el = document.getElementById(sectionId);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(sectionId);
-            return;
+          for (const sectionId of sections) {
+            const el = document.getElementById(sectionId);
+            if (el) {
+              const top = el.offsetTop;
+              const height = el.offsetHeight;
+              if (scrollPosition >= top && scrollPosition < top + height) {
+                current = sectionId;
+                break;
+              }
+            }
           }
-        }
-      }
-      if (window.scrollY < 200) {
-        setActiveSection('');
+          if (window.scrollY < 200) {
+            current = '';
+          }
+          setActiveSection((prev) => (prev !== current ? current : prev));
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
@@ -296,10 +314,10 @@ export default function Landing() {
               </div>
             ) : (
               <>
-                <button onClick={() => navigate('/login?mode=login')} className="btn-ghost text-sm">
+                <button onClick={() => navigate('/login?mode=login')} className="hidden sm:inline-flex btn-ghost text-sm">
                   Sign in
                 </button>
-                <button onClick={() => navigate('/login?mode=signup')} className="btn-primary text-sm">
+                <button onClick={() => navigate('/login?mode=signup')} className="btn-primary text-xs sm:text-sm py-2 sm:py-2.5 px-3.5 sm:px-4">
                   Get started
                 </button>
               </>
@@ -333,6 +351,28 @@ export default function Landing() {
                 </button>
               );
             })}
+            {!isAuthenticated && (
+              <div className="pt-2.5 mt-2 border-t border-slate-100 flex flex-col gap-2">
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    navigate('/login?mode=login');
+                  }}
+                  className="w-full text-center py-2.5 text-sm font-medium text-slate-700 bg-slate-50 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
+                >
+                  Sign in
+                </button>
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    navigate('/login?mode=signup');
+                  }}
+                  className="w-full text-center py-2.5 text-sm font-medium text-white bg-teal-600 hover:bg-teal-500 rounded-lg transition-colors cursor-pointer"
+                >
+                  Get started
+                </button>
+              </div>
+            )}
           </div>
         )}
       </header>
@@ -353,18 +393,19 @@ export default function Landing() {
               Healthcare decisions, made clearer.
             </h1>
             <p className="mt-6 text-lg text-slate-600 leading-relaxed text-balance">
-              Curify AI helps you discover suitable hospitals, understand treatment costs, and
-              prepare financially before making important healthcare decisions.
+              Curify AI is a healthcare decision-support and medical financing platform.
+              We help patients discover suitable hospitals, compare estimated procedure costs,
+              and prepare financial plans before medical admissions.
             </p>
-            <div className="mt-10 flex flex-col sm:flex-row items-start gap-4">
+            <div className="mt-10 flex flex-col sm:flex-row items-stretch sm:items-start gap-4">
               <button
                 onClick={() => navigate(isAuthenticated && user ? `/${user.role}` : '/login?mode=signup')}
-                className="btn-primary text-base px-8 py-3.5 flex items-center gap-2"
+                className="btn-primary text-base px-8 py-3.5 flex items-center justify-center gap-2 w-full sm:w-auto"
               >
                 Explore your options
                 <ArrowRight className="w-4 h-4" />
               </button>
-              <a href="#how-it-works" className="btn-secondary text-base px-8 py-3.5">
+              <a href="#how-it-works" className="btn-secondary text-base px-8 py-3.5 text-center justify-center w-full sm:w-auto">
                 See how it works
               </a>
             </div>
@@ -493,15 +534,62 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ═══ Trust Statement ═══ */}
-      <section className="py-20 bg-slate-50 border-y border-slate-200">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <p className="text-3xl sm:text-4xl font-semibold text-navy-900 tracking-tight leading-snug text-balance">
-            From "What should I do?" to "Here's what it may cost."
-          </p>
-          <p className="mt-4 text-lg text-slate-500">
-            Understand your healthcare options with structured, transparent cost information.
-          </p>
+      {/* ═══ The Challenge / Problem & Solution ═══ */}
+      <section id="the-problem" className="py-20 bg-slate-50 border-y border-slate-200 scroll-mt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-semibold text-navy-900 tracking-tight leading-snug text-balance">
+              The challenge: Healthcare pricing opacity and financing uncertainty
+            </h2>
+            <p className="mt-4 text-lg text-slate-600 leading-relaxed text-balance">
+              When facing a scheduled surgery or urgent procedure, patients and families
+              routinely encounter three systemic barriers that make healthcare navigation stressful and financially unpredictable.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="card p-6 sm:p-8 bg-white border-slate-200 hover:border-slate-300 transition-colors">
+              <div className="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center mb-5 text-amber-600">
+                <TrendingUp className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-semibold text-navy-900 mb-3">Unpredictable Hospital Costs</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Hospital charges for surgical procedures can vary considerably across facilities in the same metropolitan area. Patients rarely receive itemized price visibility prior to admission, making it difficult to anticipate out-of-pocket expenses.
+              </p>
+            </div>
+
+            <div className="card p-6 sm:p-8 bg-white border-slate-200 hover:border-slate-300 transition-colors">
+              <div className="w-12 h-12 rounded-xl bg-teal-50 flex items-center justify-center mb-5 text-teal-600">
+                <Search className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-semibold text-navy-900 mb-3">Clinical Terminology Gaps</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Medical documentation, treatment pathways, and diagnostic codes can be difficult for non-specialists to interpret. Families often struggle to understand what a procedure entails, what clinical steps are standard, and how care options compare.
+              </p>
+            </div>
+
+            <div className="card p-6 sm:p-8 bg-white border-slate-200 hover:border-slate-300 transition-colors">
+              <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mb-5 text-blue-600">
+                <DollarSign className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-semibold text-navy-900 mb-3">Financing Underwriting Delays</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Arranging medical financing or loan support is often slowed by unstructured estimates and fragmented paperwork. Without standardized treatment summaries, evaluating financing options takes unnecessary time when families need clarity.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-12 p-6 bg-white rounded-xl border border-teal-100 shadow-xs max-w-4xl mx-auto flex flex-col sm:flex-row items-center gap-5">
+            <div className="w-12 h-12 rounded-xl bg-teal-500 text-white flex items-center justify-center flex-shrink-0">
+              <Activity className="w-6 h-6" />
+            </div>
+            <div>
+              <p className="text-base font-semibold text-navy-900">How CurifyAI bridges this gap</p>
+              <p className="text-sm text-slate-600 mt-1 leading-relaxed">
+                Curify AI bridges this gap by mapping plain-language healthcare queries into structured clinical categories, providing itemized cost estimates across hospital benchmarks, and organizing clean treatment summaries for financial planning.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -706,7 +794,7 @@ export default function Landing() {
             >
               <div className="landing-mockup-card">
                 <div className="p-5 sm:p-6">
-                  <h3 className="text-sm font-semibold text-navy-900 mb-1">Estimated Treatment Cost</h3>
+                  <div className="text-sm font-semibold text-navy-900 mb-1">Estimated Treatment Cost</div>
                   <p className="text-2xl font-bold text-navy-900 tabular-nums">
                     ₹<AnimatedNumber value={128000} /> – ₹<AnimatedNumber value={154000} />
                   </p>
@@ -769,44 +857,54 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ═══ Benefits ═══ */}
+      {/* ═══ Benefits / Use Cases ═══ */}
       <section className="py-20 px-4">
         <div ref={benefitsVis.ref} className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-semibold text-navy-900 tracking-tight">Built for everyone involved</h2>
+            <h2 className="text-3xl sm:text-4xl font-semibold text-navy-900 tracking-tight">
+              Built for patients and healthcare lenders
+            </h2>
+            <p className="mt-3 text-lg text-slate-500 max-w-2xl mx-auto">
+              Bridging the gap between clinical needs, provider costs, and financial planning
+            </p>
           </div>
           <div className="grid lg:grid-cols-2 gap-8">
             {/* Patient card */}
             <div
               id="for-patients"
-              className="landing-benefit-card scroll-mt-24"
+              className="landing-benefit-card scroll-mt-24 flex flex-col justify-between"
               style={{
                 opacity: benefitsVis.visible ? 1 : 0,
                 transform: benefitsVis.visible ? 'none' : 'translateY(16px)',
                 transition: 'opacity 0.5s ease-out 0.1s, transform 0.5s ease-out 0.1s',
               }}
             >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center">
-                  <Users className="w-5 h-5 text-teal-600" />
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center">
+                    <Users className="w-5 h-5 text-teal-600" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-slate-900">For Patients & Families</h3>
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900">For Patients</h3>
+                <p className="text-sm text-slate-600 mb-6 leading-relaxed">
+                  Navigating hospital admissions can be overwhelming. Curify AI provides patients with clear, transparent information before making commitments.
+                </p>
+                <ul className="space-y-4 mb-6">
+                  {[
+                    'Discover suitable hospitals based on procedure, location, and budget',
+                    'Compare procedure cost ranges across matched hospitals',
+                    'Review itemized cost components: procedure, doctor consultation, hospital stay, diagnostics, and supplies',
+                    'Prepare a structured healthcare financing plan to evaluate loan options in advance',
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-slate-700 leading-snug">{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="space-y-4 mb-6">
-                {[
-                  'Find relevant providers matched to your needs',
-                  'Compare estimated costs across hospitals',
-                  'Understand pricing components in detail',
-                  'Plan healthcare financing with confidence',
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-slate-700">{item}</span>
-                  </li>
-                ))}
-              </ul>
               {/* Mini product preview */}
-              <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
+              <div className="p-3 bg-slate-50 rounded-lg border border-slate-200 mt-4">
                 <div className="flex items-center justify-between text-[11px] mb-2">
                   <span className="text-slate-500">Top recommendation</span>
                   <span className="text-teal-600 font-medium">94% match</span>
@@ -819,36 +917,41 @@ export default function Landing() {
             {/* Lender card */}
             <div
               id="for-lenders"
-              className="landing-benefit-card scroll-mt-24"
+              className="landing-benefit-card scroll-mt-24 flex flex-col justify-between"
               style={{
                 opacity: benefitsVis.visible ? 1 : 0,
                 transform: benefitsVis.visible ? 'none' : 'translateY(16px)',
                 transition: 'opacity 0.5s ease-out 0.2s, transform 0.5s ease-out 0.2s',
               }}
             >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-navy-900 flex items-center justify-center">
-                  <Building2 className="w-5 h-5 text-teal-400" />
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 rounded-xl bg-navy-900 flex items-center justify-center">
+                    <Building2 className="w-5 h-5 text-teal-400" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-slate-900">For Lenders & Healthcare Financiers</h3>
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900">For Lenders & Insurers</h3>
+                <p className="text-sm text-slate-600 mb-6 leading-relaxed">
+                  Medical loans often suffer from slow underwriting due to unstructured hospital quotes. Curify AI creates standardized loan-ready dossiers.
+                </p>
+                <ul className="space-y-4 mb-6">
+                  {[
+                    'Standardized clinical-financial case files categorized with ICD-10 medical codes',
+                    'Granular cost visibility across procedure, hospital stay, consultation, and pharmacy',
+                    'Confidence scoring reflecting input completeness, query clarity, and benchmark match',
+                    'Streamline case review with structured treatment summaries and hospital details',
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-slate-700 leading-snug">{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="space-y-4 mb-6">
-                {[
-                  'Structured treatment information for review',
-                  'Component-level cost visibility',
-                  'Confidence score for each case',
-                  'Manual underwriting workflow',
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-slate-700">{item}</span>
-                  </li>
-                ))}
-              </ul>
               {/* Lender dashboard preview */}
               <div
                 ref={lenderVis.ref}
-                className="p-3 bg-slate-50 rounded-lg border border-slate-200"
+                className="p-3 bg-slate-50 rounded-lg border border-slate-200 mt-4"
                 style={{
                   opacity: lenderVis.visible ? 1 : 0,
                   transition: 'opacity 0.5s ease-out 0.3s',
@@ -879,39 +982,102 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ═══ Responsible AI ═══ */}
+      {/* ═══ Platform Capabilities & Protections ═══ */}
+      <section className="py-20 bg-slate-50 border-y border-slate-200 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-semibold text-navy-900 tracking-tight">
+              Platform capabilities designed for trust
+            </h2>
+            <p className="mt-3 text-lg text-slate-500 max-w-2xl mx-auto">
+              Designed with transparent algorithms, structured cost models, and privacy protections
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="card p-6 sm:p-8 bg-white border-slate-200">
+              <div className="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center mb-4 text-teal-600">
+                <Scale className="w-5 h-5" />
+              </div>
+              <h3 className="text-lg font-semibold text-navy-900 mb-2">Objective Provider Discovery</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Hospital suggestions are generated based on clinical relevance, location, and procedural fit. Curify AI does not sell sponsored positions or prioritized rankings in search results.
+              </p>
+            </div>
+
+            <div className="card p-6 sm:p-8 bg-white border-slate-200">
+              <div className="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center mb-4 text-teal-600">
+                <BarChart3 className="w-5 h-5" />
+              </div>
+              <h3 className="text-lg font-semibold text-navy-900 mb-2">Component-Level Pricing Models</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Instead of single lump-sum figures, our estimation engine breaks down expected expenses across procedure, doctor consultation, hospital stay, diagnostics, and supplies so you understand each component.
+              </p>
+            </div>
+
+            <div className="card p-6 sm:p-8 bg-white border-slate-200">
+              <div className="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center mb-4 text-teal-600">
+                <Lock className="w-5 h-5" />
+              </div>
+              <h3 className="text-lg font-semibold text-navy-900 mb-2">Privacy & Data Governance</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Patient healthcare queries and submitted information are protected with secure access controls. Case details are shared with lending partners only when you choose to submit a financing request.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ Responsible AI & Disclaimers ═══ */}
       <section id="responsible-ai" className="py-20 px-4 max-w-4xl mx-auto scroll-mt-20">
         <div
           ref={aiVis.ref}
-          className="card p-8 sm:p-12 bg-slate-50 border-slate-200"
+          className="card p-8 sm:p-12 bg-white border-slate-200 shadow-sm"
           style={{
             opacity: aiVis.visible ? 1 : 0,
             transform: aiVis.visible ? 'none' : 'translateY(16px)',
             transition: 'opacity 0.5s ease-out, transform 0.5s ease-out',
           }}
         >
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-3 mb-6">
             <div className="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center">
               <Shield className="w-5 h-5 text-teal-600" />
             </div>
-            <h2 className="text-2xl font-semibold text-navy-900">Responsible AI</h2>
+            <h2 className="text-2xl sm:text-3xl font-semibold text-navy-900">
+              Responsible AI and regulatory disclaimers
+            </h2>
           </div>
-          <p className="text-slate-600 leading-relaxed">
-            Curify AI provides financial and decision-support information. It does not provide
-            medical diagnoses or treatment prescriptions. All clinical information is intended
-            for preliminary planning and should be validated by qualified healthcare professionals.
-          </p>
-          <div className="mt-6 grid sm:grid-cols-3 gap-4">
-            {[
-              { icon: Shield, label: 'Decision support only' },
-              { icon: BarChart3, label: 'Transparent confidence scoring' },
-              { icon: Sparkles, label: 'No diagnostic claims' },
-            ].map((item) => (
-              <div key={item.label} className="flex items-center gap-2 text-sm text-slate-700">
-                <item.icon className="w-4 h-4 text-teal-600 flex-shrink-0" />
-                {item.label}
+
+          <div className="space-y-4 text-sm text-slate-600 leading-relaxed">
+            <div className="p-4 bg-slate-50 rounded-xl border border-slate-200/80">
+              <div className="flex items-center gap-2 font-semibold text-slate-800 mb-1">
+                <AlertCircle className="w-4 h-4 text-teal-600 flex-shrink-0" />
+                <span>Medical Decision-Support Notice</span>
               </div>
-            ))}
+              <p>
+                Curify AI provides informational decision support and cost estimation. It is not a licensed healthcare provider, diagnostic center, or clinical physician. Curify AI does not formulate clinical diagnoses, prescribe treatments, or recommend medications. All procedural suggestions and clinical categories are intended for preliminary financial and logistical planning and must be validated by a licensed physician.
+              </p>
+            </div>
+
+            <div className="p-4 bg-slate-50 rounded-xl border border-slate-200/80">
+              <div className="flex items-center gap-2 font-semibold text-slate-800 mb-1">
+                <DollarSign className="w-4 h-4 text-teal-600 flex-shrink-0" />
+                <span>Cost Estimation & Billing Notice</span>
+              </div>
+              <p>
+                Cost ranges displayed on Curify AI represent indicative estimates calculated from internal benchmark models, procedure blueprints, and user inputs. Actual hospital billing may differ based on patient medical status, comorbidities, physician selection, room tier, and hospital billing policies.
+              </p>
+            </div>
+
+            <div className="p-4 bg-slate-50 rounded-xl border border-slate-200/80">
+              <div className="flex items-center gap-2 font-semibold text-slate-800 mb-1">
+                <Building2 className="w-4 h-4 text-teal-600 flex-shrink-0" />
+                <span>Financial & Lending Independence</span>
+              </div>
+              <p>
+                Curify AI assists in structuring healthcare financing applications and facilitating review by partner financial institutions. Curify AI is not a bank, non-banking financial company (NBFC), or money lender. Credit assessment, interest rates, eligibility criteria, and disbursement approvals remain at the sole discretion of partner lenders.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -956,7 +1122,7 @@ export default function Landing() {
             {/* Navigation links for crawlability */}
             <nav aria-label="Footer navigation" className="flex flex-col sm:flex-row gap-6 sm:gap-10">
               <div>
-                <h4 className="text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Platform</h4>
+                <h3 className="text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Platform</h3>
                 <ul className="space-y-1.5">
                   <li><button onClick={() => scrollToSection('how-it-works')} className="text-xs text-slate-500 hover:text-teal-600 transition-colors cursor-pointer">How It Works</button></li>
                   <li><button onClick={() => scrollToSection('for-patients')} className="text-xs text-slate-500 hover:text-teal-600 transition-colors cursor-pointer">For Patients</button></li>
@@ -965,7 +1131,7 @@ export default function Landing() {
                 </ul>
               </div>
               <div>
-                <h4 className="text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Get Started</h4>
+                <h3 className="text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Get Started</h3>
                 <ul className="space-y-1.5">
                   <li><Link to="/login?mode=login" className="text-xs text-slate-500 hover:text-teal-600 transition-colors">Sign In</Link></li>
                   <li><Link to="/login?mode=signup" className="text-xs text-slate-500 hover:text-teal-600 transition-colors">Create Account</Link></li>
