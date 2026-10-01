@@ -1,6 +1,7 @@
-import { useNavigate } from 'react-router-dom';
-import { useState, useEffect, useRef } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { useAuth } from '../context/AuthContext';
+import SEOHead from '../components/SEOHead';
 import {
   Activity,
   Search,
@@ -191,8 +192,49 @@ export default function Landing() {
   const lenderVis = useInView(0.15);
   const aiVis = useInView(0.15);
 
+  const landingJsonLd = useMemo(() => [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      'name': 'Curify AI',
+      'url': 'https://curifyai.tech',
+      'description': 'Curify AI is a healthcare decision-support platform that helps patients discover suitable hospitals, compare treatment costs, and plan healthcare financing.',
+      'potentialAction': {
+        '@type': 'SearchAction',
+        'target': 'https://curifyai.tech/login?mode=signup',
+        'query-input': 'required name=search_term_string',
+      },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      'name': 'Curify AI — Healthcare Decisions, Made Clearer',
+      'url': 'https://curifyai.tech/',
+      'description': 'Discover suitable hospitals, compare treatment costs, and plan healthcare financing with AI-powered decision support.',
+      'isPartOf': { '@type': 'WebSite', 'name': 'Curify AI', 'url': 'https://curifyai.tech' },
+      'about': {
+        '@type': 'MedicalBusiness',
+        'name': 'Curify AI',
+        'description': 'Healthcare decision-support and medical financing platform.',
+      },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      'itemListElement': [
+        { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': 'https://curifyai.tech/' },
+      ],
+    },
+  ], []);
+
   return (
     <div className="min-h-screen bg-white">
+      <SEOHead
+        title="Healthcare Decisions, Made Clearer"
+        description="Curify AI helps you discover suitable hospitals, compare treatment costs, and plan healthcare financing — all in one place."
+        canonicalPath="/"
+        jsonLd={landingJsonLd}
+      />
       {/* ═══ Nav ═══ */}
       <header className="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-sm border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
@@ -344,6 +386,9 @@ export default function Landing() {
                 alt="Patient consulting with a healthcare professional in a modern clinic"
                 className="landing-hero-img"
                 loading="eager"
+                width="720"
+                height="480"
+                fetchPriority="high"
               />
               {/* Subtle gradient overlay at bottom for card integration */}
               <div className="landing-hero-img-fade" />
@@ -891,18 +936,52 @@ export default function Landing() {
       </section>
 
       {/* ═══ Footer ═══ */}
-      <footer className="py-8 border-t border-slate-200 px-4">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="flex items-center gap-2 hover:opacity-80 transition-opacity text-left cursor-pointer focus-visible:outline-none"
-          >
-            <Activity className="w-5 h-5 text-teal-600" />
-            <span className="text-sm font-semibold text-slate-700">Curify AI</span>
-          </button>
-          <p className="text-xs text-slate-500">
-            © 2026 Curify AI. Healthcare decision-support platform. Not a medical diagnostic tool.
-          </p>
+      <footer className="py-10 border-t border-slate-200 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col sm:flex-row items-start justify-between gap-8">
+            {/* Brand */}
+            <div>
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="flex items-center gap-2 hover:opacity-80 transition-opacity text-left cursor-pointer focus-visible:outline-none mb-2"
+              >
+                <Activity className="w-5 h-5 text-teal-600" />
+                <span className="text-sm font-semibold text-slate-700">Curify AI</span>
+              </button>
+              <p className="text-xs text-slate-500 max-w-xs">
+                Healthcare decision-support platform. Discover hospitals, compare costs, and plan financing.
+              </p>
+            </div>
+
+            {/* Navigation links for crawlability */}
+            <nav aria-label="Footer navigation" className="flex flex-col sm:flex-row gap-6 sm:gap-10">
+              <div>
+                <h4 className="text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Platform</h4>
+                <ul className="space-y-1.5">
+                  <li><button onClick={() => scrollToSection('how-it-works')} className="text-xs text-slate-500 hover:text-teal-600 transition-colors cursor-pointer">How It Works</button></li>
+                  <li><button onClick={() => scrollToSection('for-patients')} className="text-xs text-slate-500 hover:text-teal-600 transition-colors cursor-pointer">For Patients</button></li>
+                  <li><button onClick={() => scrollToSection('for-lenders')} className="text-xs text-slate-500 hover:text-teal-600 transition-colors cursor-pointer">For Lenders</button></li>
+                  <li><button onClick={() => scrollToSection('why-curify')} className="text-xs text-slate-500 hover:text-teal-600 transition-colors cursor-pointer">Why Curify</button></li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Get Started</h4>
+                <ul className="space-y-1.5">
+                  <li><Link to="/login?mode=login" className="text-xs text-slate-500 hover:text-teal-600 transition-colors">Sign In</Link></li>
+                  <li><Link to="/login?mode=signup" className="text-xs text-slate-500 hover:text-teal-600 transition-colors">Create Account</Link></li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+
+          <div className="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-2">
+            <p className="text-xs text-slate-400">
+              © {new Date().getFullYear()} Curify AI. Healthcare decision-support platform. Not a medical diagnostic tool.
+            </p>
+            <p className="text-xs text-slate-400">
+              All cost estimates are approximate and subject to change. Consult your healthcare provider for medical advice.
+            </p>
+          </div>
         </div>
       </footer>
     </div>

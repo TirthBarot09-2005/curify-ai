@@ -4,6 +4,7 @@ import { useSignIn, useSignUp } from '@clerk/clerk-react';
 import { useAuth } from '../context/AuthContext';
 import type { User, UserRole } from '../types';
 import { api } from '../lib/api';
+import SEOHead from '../components/SEOHead';
 import {
   Activity,
   Eye,
@@ -955,6 +956,14 @@ export default function Login() {
 
   return (
     <div className="login-ambient-page">
+      <SEOHead
+        title={mode === 'signup' ? 'Create Your Account' : 'Sign In'}
+        description={mode === 'signup'
+          ? 'Create a Curify AI account to discover suitable hospitals, compare treatment costs, and plan healthcare financing.'
+          : 'Sign in to your Curify AI account to manage your healthcare decisions and financing plans.'
+        }
+        canonicalPath={mode === 'signup' ? '/signup' : '/login'}
+      />
       {/* ─── Ambient Layered Background ─── */}
       <div className="login-ambient-bg" aria-hidden="true">
         <div className="login-ambient-glow-tl" />

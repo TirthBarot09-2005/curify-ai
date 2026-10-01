@@ -1,0 +1,11 @@
+# Curify AI — https://curifyai.tech
+# Healthcare decision-support platform
+
+User-agent: *
+Allow: /
+Disallow: /patient/
+Disallow: /lender/
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://curifyai.tech/sitemap.xml
